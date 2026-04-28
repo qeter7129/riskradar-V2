@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta http-equiv="refresh" content="3600">
+<meta name="theme-color" content="#080810">
+<title>RiskRadar 市場風險儀表板</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:#080810;color:#f0f0f8;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;min-height:100vh}
+.hdr{position:sticky;top:0;z-index:100;background:rgba(8,8,16,.95);border-bottom:1px solid #1a1a2e;padding:12px 16px;display:flex;align-items:center;gap:10px}
+.logo{font-size:1.25em;font-weight:700}.time{font-size:.75em;color:#555;margin-top:2px}
+.wrap{max-width:600px;margin:0 auto;padding:14px}
+.sc{background:#001a08;border:1.5px solid #00e67640;border-radius:14px;padding:24px 16px;text-align:center;margin-bottom:14px}
+.sn{font-size:5em;font-weight:800;color:#00e676;line-height:1;letter-spacing:-3px}
+.sl{font-size:1.4em;font-weight:700;margin:6px 0 4px}
+.sa{display:inline-block;background:#ffffff12;padding:7px 14px;border-radius:8px;font-size:.9em;color:#ccc;margin-top:6px}
+.bb{background:#141420;border-radius:8px;height:10px;margin:14px 0 0;overflow:hidden}
+.bf{height:100%;border-radius:8px;background:linear-gradient(90deg,#00e676 0%,#ffea00 45%,#ff6d00 70%,#ff1744 100%)}
+.sec{font-size:.7em;letter-spacing:2px;text-transform:uppercase;color:#444;margin:18px 0 8px 2px}
+.card{background:#0d0d1c;border:1px solid #1a1a2e;border-radius:12px;overflow:hidden;margin-bottom:12px}
+table{width:100%;border-collapse:collapse}
+tr:not(:last-child){border-bottom:1px solid #1a1a2c}
+.rs{padding:10px 14px;font-weight:700}.rd{padding:10px 14px;color:#777;font-size:.88em}
+.foot{text-align:center;font-size:.72em;color:#333;padding:20px 0 30px;line-height:1.8}
+@media(max-width:480px){.dc{display:none}}
+</style>
+</head>
+<body>
+<div class="hdr">
+  <span style="font-size:1.5em">📡</span>
+  <div><div class="logo">RiskRadar</div><div class="time">⏱ 2026-04-28 11:10 台灣時間</div></div>
+</div>
+<div class="wrap">
+  <div class="sc">
+    <div class="sn">20</div>
+    <div class="sl">🟢 低風險</div>
+    <div class="sa">正常持倉，可評估加碼</div>
+    <div class="bb"><div class="bf" style="width:20%"></div></div>
+  </div>
+  <div class="sec">⚡ 風險信號詳情</div>
+  <div class="card"><table>
+    <thead><tr style="background:#111120;font-size:.7em;color:#333;text-transform:uppercase">
+      <th style="padding:8px 4px 8px 12px;width:36px"></th>
+      <th style="padding:8px 4px;text-align:left">指標</th>
+      <th style="padding:8px 4px;text-align:left">數值</th>
+      <th class="dc" style="padding:8px;text-align:left">說明</th>
+      <th style="padding:8px 12px 8px 4px;text-align:right">分數</th>
+    </tr></thead>
+    <tbody><tr>
+<td style="font-size:1.3em;padding:8px 4px 8px 12px">🟡</td>
+<td style="padding:8px 4px;color:#e0e0f0;font-size:.9em">VIX 恐慌指數</td>
+<td style="padding:8px 4px;font-family:monospace;color:#999;font-size:.84em">18.0</td>
+<td class="dc" style="padding:8px;color:#666;font-size:.82em">輕微波動</td>
+<td style="padding:8px 12px 8px 4px;color:#ff6d00;font-weight:700;text-align:right;font-size:.9em">+5</td>
+</tr><tr>
+<td style="font-size:1.3em;padding:8px 4px 8px 12px">🟢</td>
+<td style="padding:8px 4px;color:#e0e0f0;font-size:.9em">殖利率曲線(3M-10Y)</td>
+<td style="padding:8px 4px;font-family:monospace;color:#999;font-size:.84em">+0.75%</td>
+<td class="dc" style="padding:8px;color:#666;font-size:.82em">正常</td>
+<td style="padding:8px 12px 8px 4px;color:#00e676;font-weight:700;text-align:right;font-size:.9em">✓</td>
+</tr><tr>
+<td style="font-size:1.3em;padding:8px 4px 8px 12px">🟢</td>
+<td style="padding:8px 4px;color:#e0e0f0;font-size:.9em">SOX 半導體</td>
+<td style="padding:8px 4px;font-family:monospace;color:#999;font-size:.84em">10,408 (-1.00%)</td>
+<td class="dc" style="padding:8px;color:#666;font-size:.82em">平穩/走強</td>
+<td style="padding:8px 12px 8px 4px;color:#00e676;font-weight:700;text-align:right;font-size:.9em">✓</td>
+</tr><tr>
+<td style="font-size:1.3em;padding:8px 4px 8px 12px">🟢</td>
+<td style="padding:8px 4px;color:#e0e0f0;font-size:.9em">高收益債 HYG</td>
+<td style="padding:8px 4px;font-family:monospace;color:#999;font-size:.84em">$80.51 (+0.04%)</td>
+<td class="dc" style="padding:8px;color:#666;font-size:.82em">信用平穩</td>
+<td style="padding:8px 12px 8px 4px;color:#00e676;font-weight:700;text-align:right;font-size:.9em">✓</td>
+</tr><tr>
+<td style="font-size:1.3em;padding:8px 4px 8px 12px">🟢</td>
+<td style="padding:8px 4px;color:#e0e0f0;font-size:.9em">S&P500 vs 200MA</td>
+<td style="padding:8px 4px;font-family:monospace;color:#999;font-size:.84em">7,174（MA:6,710）</td>
+<td class="dc" style="padding:8px;color:#666;font-size:.82em">站上200日均線</td>
+<td style="padding:8px 12px 8px 4px;color:#00e676;font-weight:700;text-align:right;font-size:.9em">✓</td>
+</tr><tr>
+<td style="font-size:1.3em;padding:8px 4px 8px 12px">🟢</td>
+<td style="padding:8px 4px;color:#e0e0f0;font-size:.9em">黃金</td>
+<td style="padding:8px 4px;font-family:monospace;color:#999;font-size:.84em">$4,685 (+0.20%)</td>
+<td class="dc" style="padding:8px;color:#666;font-size:.82em">平穩</td>
+<td style="padding:8px 12px 8px 4px;color:#00e676;font-weight:700;text-align:right;font-size:.9em">✓</td>
+</tr><tr>
+<td style="font-size:1.3em;padding:8px 4px 8px 12px">🟢</td>
+<td style="padding:8px 4px;color:#e0e0f0;font-size:.9em">原油 WTI</td>
+<td style="padding:8px 4px;font-family:monospace;color:#999;font-size:.84em">$97.4 (+1.04%)</td>
+<td class="dc" style="padding:8px;color:#666;font-size:.82em">平穩</td>
+<td style="padding:8px 12px 8px 4px;color:#00e676;font-weight:700;text-align:right;font-size:.9em">✓</td>
+</tr><tr>
+<td style="font-size:1.3em;padding:8px 4px 8px 12px">🟢</td>
+<td style="padding:8px 4px;color:#e0e0f0;font-size:.9em">銅價（景氣計）</td>
+<td style="padding:8px 4px;font-family:monospace;color:#999;font-size:.84em">$6.06 (+0.71%)</td>
+<td class="dc" style="padding:8px;color:#666;font-size:.82em">平穩/上漲</td>
+<td style="padding:8px 12px 8px 4px;color:#00e676;font-weight:700;text-align:right;font-size:.9em">✓</td>
+</tr><tr>
+<td style="font-size:1.3em;padding:8px 4px 8px 12px">🟢</td>
+<td style="padding:8px 4px;color:#e0e0f0;font-size:.9em">日圓 USD/JPY</td>
+<td style="padding:8px 4px;font-family:monospace;color:#999;font-size:.84em">159.22 (-0.23%)</td>
+<td class="dc" style="padding:8px;color:#666;font-size:.82em">套利交易平穩</td>
+<td style="padding:8px 12px 8px 4px;color:#00e676;font-weight:700;text-align:right;font-size:.9em">✓</td>
+</tr><tr>
+<td style="font-size:1.3em;padding:8px 4px 8px 12px">🟢</td>
+<td style="padding:8px 4px;color:#e0e0f0;font-size:.9em">DXY 美元指數</td>
+<td style="padding:8px 4px;font-family:monospace;color:#999;font-size:.84em">98.59 (+0.11%)</td>
+<td class="dc" style="padding:8px;color:#666;font-size:.82em">平穩/走弱</td>
+<td style="padding:8px 12px 8px 4px;color:#00e676;font-weight:700;text-align:right;font-size:.9em">✓</td>
+</tr><tr>
+<td style="font-size:1.3em;padding:8px 4px 8px 12px">🔴</td>
+<td style="padding:8px 4px;color:#e0e0f0;font-size:.9em">三大法人買賣超</td>
+<td style="padding:8px 4px;font-family:monospace;color:#999;font-size:.84em">-472.4億</td>
+<td class="dc" style="padding:8px;color:#666;font-size:.82em">大幅賣超（資金撤出）</td>
+<td style="padding:8px 12px 8px 4px;color:#ff1744;font-weight:700;text-align:right;font-size:.9em">+15</td>
+</tr><tr>
+<td style="font-size:1.3em;padding:8px 4px 8px 12px">🟢</td>
+<td style="padding:8px 4px;color:#e0e0f0;font-size:.9em">台積電 2330</td>
+<td style="padding:8px 4px;font-family:monospace;color:#999;font-size:.84em">NT$2240（MA60:1898）</td>
+<td class="dc" style="padding:8px;color:#666;font-size:.82em">站上60MA</td>
+<td style="padding:8px 12px 8px 4px;color:#00e676;font-weight:700;text-align:right;font-size:.9em">✓</td>
+</tr><tr>
+<td style="font-size:1.3em;padding:8px 4px 8px 12px">🟢</td>
+<td style="padding:8px 4px;color:#e0e0f0;font-size:.9em">台股加權</td>
+<td style="padding:8px 4px;font-family:monospace;color:#999;font-size:.84em">39,752（MA20:35,956）</td>
+<td class="dc" style="padding:8px;color:#666;font-size:.82em">站上20日均線</td>
+<td style="padding:8px 12px 8px 4px;color:#00e676;font-weight:700;text-align:right;font-size:.9em">✓</td>
+</tr><tr>
+<td style="font-size:1.3em;padding:8px 4px 8px 12px">🟢</td>
+<td style="padding:8px 4px;color:#e0e0f0;font-size:.9em">台幣 USD/TWD</td>
+<td style="padding:8px 4px;font-family:monospace;color:#999;font-size:.84em">31.540 (+0.32%)</td>
+<td class="dc" style="padding:8px;color:#666;font-size:.82em">台幣穩定</td>
+<td style="padding:8px 12px 8px 4px;color:#00e676;font-weight:700;text-align:right;font-size:.9em">✓</td>
+</tr><tr>
+<td style="font-size:1.3em;padding:8px 4px 8px 12px">🟢</td>
+<td style="padding:8px 4px;color:#e0e0f0;font-size:.9em">上海綜指</td>
+<td style="padding:8px 4px;font-family:monospace;color:#999;font-size:.84em">4,076 (-0.25%)</td>
+<td class="dc" style="padding:8px;color:#666;font-size:.82em">平穩/上漲</td>
+<td style="padding:8px 12px 8px 4px;color:#00e676;font-weight:700;text-align:right;font-size:.9em">✓</td>
+</tr></tbody>
+  </table></div>
+  <div class="sec">📋 出場參考</div>
+  <div class="card"><table><tbody>
+    <tr><td class="rs" style="color:#00e676">0–25</td><td class="rd">🟢 低風險｜正常持倉，可評估加碼</td></tr>
+    <tr><td class="rs" style="color:#ffea00">26–45</td><td class="rd">🟡 中等風險｜留意訊號，縮減高風險部位</td></tr>
+    <tr><td class="rs" style="color:#ff6d00">46–65</td><td class="rd">🟠 中高風險｜分批獲利了結 30~50%</td></tr>
+    <tr><td class="rs" style="color:#ff4444">66–80</td><td class="rd">🔴 高風險｜出場 70%，僅留核心部位</td></tr>
+    <tr><td class="rs" style="color:#ff1744">81–100</td><td class="rd">⛔ 極高風險｜全數出場，持現金等待</td></tr>
+  </tbody></table></div>
+  <div class="foot">
+    RiskRadar｜數據：Yahoo Finance · CNN · 台灣證交所<br>
+    每日 08:00 / 18:00 台灣時間自動更新｜本頁僅供參考，非投資建議
+  </div>
+</div>
+</body>
+</html>
