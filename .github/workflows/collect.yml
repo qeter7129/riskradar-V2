@@ -1,0 +1,38 @@
+name: RiskRadar Daily
+
+on:
+  schedule:
+    - cron: "0 0,10 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install packages
+        run: pip install yfinance requests pandas
+
+      - name: Run RiskRadar
+        run: python collect_data.py
+
+      - name: Push result
+        run: |
+          git config user.name "riskradar-bot"
+          git config user.email "bot@riskradar"
+          git add -A
+          git diff --staged --quiet || git commit -m "data: $(date -u '+%Y-%m-%d %H:%M UTC')"
+          git push
