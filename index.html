@@ -2,797 +2,156 @@
 <html lang="zh-TW">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>RiskRadar V3 · 全自動股市風險預警</title>
-<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700&family=Syne:wght@700;800&display=swap" rel="stylesheet">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta http-equiv="refresh" content="3600">
+<meta name="theme-color" content="#080810">
+<title>RiskRadar 市場風險儀表板</title>
 <style>
-:root{
-  --bg0:#020810;--bg1:#070f1e;--bg2:#0c1628;
-  --border:rgba(0,180,100,.1);--border2:rgba(255,255,255,.05);
-  --txt1:#c8ddf0;--txt2:#5a7a9c;--txt3:#2e4a68;
-  --green:#00d97e;--lime:#80e040;--yellow:#f5c542;
-  --orange:#ff7a30;--red:#ff2255;--blue:#41c8f8;--purple:#9b7dff;
-  --mono:'JetBrains Mono',monospace;--syne:'Syne',sans-serif;
-}
 *{box-sizing:border-box;margin:0;padding:0}
-body{background:var(--bg0);color:var(--txt1);font-family:var(--syne);min-height:100vh;padding:24px 20px;
-  background-image:radial-gradient(ellipse 70% 50% at 50% -5%,rgba(0,100,255,.07),transparent),radial-gradient(ellipse 40% 30% at 90% 80%,rgba(155,125,255,.04),transparent);}
-.wrap{max-width:1120px;margin:0 auto}
-
-/* HEADER */
-.hdr{display:flex;align-items:center;justify-content:space-between;padding-bottom:18px;border-bottom:1px solid var(--border);margin-bottom:22px}
-.logo{display:flex;align-items:center;gap:13px}
-.logo-ring{width:34px;height:34px;border-radius:50%;border:2px solid var(--green);display:flex;align-items:center;justify-content:center;box-shadow:0 0 14px rgba(0,217,126,.18)}
-.logo-ring svg{width:17px;height:17px}
-.logo-main{font-size:19px;font-weight:800;letter-spacing:3px;color:var(--green)}
-.logo-sub{font-size:10px;color:var(--txt2);margin-top:2px;font-family:var(--mono)}
-.hdr-r{text-align:right;font-family:var(--mono);font-size:11px;color:var(--txt3);line-height:2}
-.hdr-r span{color:var(--txt2)}
-
-/* SCORE CARD */
-.score-card{border-radius:14px;border:1px solid var(--border);background:linear-gradient(135deg,var(--bg1),var(--bg2));padding:26px 30px;margin-bottom:14px;display:grid;grid-template-columns:auto 1fr auto;gap:28px;align-items:center}
-.sc-left{text-align:center;min-width:150px}
-.sc-num{font-family:var(--mono);font-size:92px;font-weight:700;line-height:1;transition:color .6s}
-.sc-badge{display:inline-flex;align-items:center;gap:7px;margin:5px 0;padding:5px 13px;border-radius:20px;border:1px solid;transition:all .6s}
-.sc-badge-dot{width:8px;height:8px;border-radius:50%}
-.sc-badge-txt{font-size:13px;font-weight:700;letter-spacing:1px}
-.sc-action{font-family:var(--mono);font-size:11px;color:var(--txt2);margin-top:5px}
-.gauge-lbl{font-family:var(--mono);font-size:10px;color:var(--txt3);text-transform:uppercase;letter-spacing:.5px;margin-bottom:7px}
-.gauge-track{height:7px;border-radius:4px;background:linear-gradient(to right,var(--green),var(--lime),var(--yellow),var(--orange),var(--red));position:relative;margin-bottom:4px}
-.gauge-pip{position:absolute;width:15px;height:15px;border-radius:50%;background:#fff;border:3px solid #000;top:-4px;transform:translateX(-50%);transition:left .9s cubic-bezier(.4,0,.2,1);box-shadow:0 0 9px rgba(255,255,255,.3)}
-.gauge-scale{display:flex;justify-content:space-between;font-family:var(--mono);font-size:10px;color:var(--txt3)}
-.zone-bar{display:flex;gap:3px;margin-top:10px}
-.zone{flex:1;height:3px;border-radius:2px;opacity:.5}
-.zone-row{display:flex;gap:3px;margin-top:3px}
-.zone-l{flex:1;font-family:var(--mono);font-size:9px;text-align:center;color:var(--txt3)}
-.sc-right{min-width:210px}
-.brkd-title{font-family:var(--mono);font-size:10px;color:var(--txt3);text-transform:uppercase;letter-spacing:.5px;margin-bottom:9px}
-.brkd-row{display:flex;align-items:center;gap:7px;margin-bottom:6px}
-.brkd-name{font-family:var(--mono);font-size:11px;width:64px;flex-shrink:0}
-.brkd-track{flex:1;height:4px;background:rgba(255,255,255,.05);border-radius:2px;overflow:hidden}
-.brkd-fill{height:100%;border-radius:2px;transition:width .9s}
-.brkd-score{font-family:var(--mono);font-size:11px;width:28px;text-align:right;flex-shrink:0}
-.brkd-max{font-family:var(--mono);font-size:9px;color:var(--txt3);width:20px;text-align:right;flex-shrink:0}
-
-/* ALERT */
-.alert-box{border-radius:9px;padding:11px 16px;margin-bottom:12px;font-family:var(--mono);font-size:11px;border:1px solid;line-height:1.7}
-.alert-red{background:rgba(255,34,85,.05);border-color:rgba(255,34,85,.3);color:var(--red)}
-.alert-yellow{background:rgba(245,197,66,.05);border-color:rgba(245,197,66,.25);color:var(--yellow)}
-
-/* STATUS BAR */
-.status-bar{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:12px}
-.status-pill{font-family:var(--mono);font-size:10px;padding:3px 10px;border-radius:12px;border:1px solid}
-.s-auto{background:rgba(65,200,248,.07);color:var(--blue);border-color:rgba(65,200,248,.2)}
-.s-manual{background:rgba(245,197,66,.07);color:var(--yellow);border-color:rgba(245,197,66,.2)}
-.s-ok{background:rgba(0,217,126,.07);color:var(--green);border-color:rgba(0,217,126,.2)}
-.s-fail{background:rgba(255,34,85,.07);color:var(--red);border-color:rgba(255,34,85,.2)}
-
-/* TABLE */
-.sec-hdr{font-family:var(--mono);font-size:10px;color:var(--txt2);text-transform:uppercase;letter-spacing:1.5px;margin-bottom:9px;display:flex;align-items:center;gap:7px}
-.sec-hdr::before{content:'';display:inline-block;width:10px;height:1px;background:var(--txt3)}
+body{background:#080810;color:#f0f0f8;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;min-height:100vh}
+.hdr{position:sticky;top:0;z-index:100;background:rgba(8,8,16,.95);border-bottom:1px solid #1a1a2e;padding:12px 16px;display:flex;align-items:center;gap:10px}
+.logo{font-size:1.25em;font-weight:700}.time{font-size:.75em;color:#555;margin-top:2px}
+.wrap{max-width:600px;margin:0 auto;padding:14px}
+.sc{background:#001a08;border:1.5px solid #00e67640;border-radius:14px;padding:24px 16px;text-align:center;margin-bottom:14px}
+.sn{font-size:5em;font-weight:800;color:#00e676;line-height:1;letter-spacing:-3px}
+.sl{font-size:1.4em;font-weight:700;margin:6px 0 4px}
+.sa{display:inline-block;background:#ffffff12;padding:7px 14px;border-radius:8px;font-size:.9em;color:#ccc;margin-top:6px}
+.bb{background:#141420;border-radius:8px;height:10px;margin:14px 0 0;overflow:hidden}
+.bf{height:100%;border-radius:8px;background:linear-gradient(90deg,#00e676 0%,#ffea00 45%,#ff6d00 70%,#ff1744 100%)}
+.sec{font-size:.7em;letter-spacing:2px;text-transform:uppercase;color:#444;margin:18px 0 8px 2px}
+.card{background:#0d0d1c;border:1px solid #1a1a2e;border-radius:12px;overflow:hidden;margin-bottom:12px}
 table{width:100%;border-collapse:collapse}
-thead th{font-family:var(--mono);font-size:10px;color:var(--txt3);text-transform:uppercase;letter-spacing:.5px;padding:7px 9px;text-align:left;background:rgba(0,0,0,.3);position:sticky;top:0;z-index:2}
-thead th:nth-child(5){text-align:center}
-thead th:nth-child(6),thead th:nth-child(7){text-align:right}
-.cat-sep td{padding:6px 9px;background:rgba(0,180,100,.03);font-family:var(--mono);font-size:10px;font-weight:700;color:var(--txt2);letter-spacing:1px;text-transform:uppercase;border-top:1px solid rgba(0,180,100,.09)}
-.cat-v td{background:rgba(155,125,255,.05);border-top:1px solid rgba(155,125,255,.12)}
-.ind-row td{padding:9px 9px;border-top:1px solid rgba(255,255,255,.022);font-size:12px;vertical-align:middle}
-.ind-row:hover{background:rgba(255,255,255,.013)}
-.name-cell{display:flex;align-items:center;gap:7px;font-weight:700;font-size:13px}
-.sdot{width:8px;height:8px;border-radius:50%;flex-shrink:0}
-.tag{font-family:var(--mono);font-size:9px;padding:1px 5px;border-radius:3px;font-weight:400;flex-shrink:0}
-.ta{background:rgba(65,200,248,.07);color:var(--blue);border:1px solid rgba(65,200,248,.18)}
-.tm{background:rgba(245,197,66,.07);color:var(--yellow);border:1px solid rgba(245,197,66,.18)}
-.tv{background:rgba(155,125,255,.1);color:var(--purple);border:1px solid rgba(155,125,255,.22)}
-.val-c{font-family:var(--mono);font-size:11px;color:#8aaac8}
-.desc-c{font-size:11px;color:var(--txt2);font-family:var(--mono)}
-.wt-c{text-align:center;padding:9px 5px!important}
-.wt-inner{display:flex;flex-direction:column;align-items:center;gap:2px}
-.wt-num{font-family:var(--mono);font-size:10px;font-weight:700}
-.wt-bar{height:3px;border-radius:2px}
-.sc-c{text-align:right;font-family:var(--mono);font-size:15px;font-weight:700}
-.mx-c{text-align:right;font-family:var(--mono);font-size:10px;color:var(--txt3)}
-.c0{color:var(--green)}.c1{color:var(--lime)}.c2{color:var(--yellow)}.c3{color:var(--orange)}.c4{color:var(--red)}
-
-/* MANUAL BOX */
-.manual-box{background:var(--bg1);border:1px solid rgba(245,197,66,.2);border-radius:11px;padding:18px 22px;margin-top:14px}
-.manual-hdr{font-family:var(--mono);font-size:10px;color:var(--yellow);text-transform:uppercase;letter-spacing:1px;margin-bottom:12px}
-.manual-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:8px}
-.m-box{background:rgba(0,0,0,.35);border-radius:7px;padding:10px}
-.m-key{font-family:var(--mono);font-size:9px;color:var(--txt3);text-transform:uppercase;margin-bottom:3px}
-.m-val{font-family:var(--mono);font-size:13px;font-weight:700;color:var(--txt1)}
-.m-src{font-family:var(--mono);font-size:9px;color:rgba(245,197,66,.45);margin-top:2px}
-
-/* WEIGHT EXPLAINER */
-.we{background:rgba(155,125,255,.04);border:1px solid rgba(155,125,255,.1);border-radius:11px;padding:18px 22px;margin-top:12px}
-.we-hdr{font-family:var(--mono);font-size:10px;color:var(--purple);text-transform:uppercase;letter-spacing:1px;margin-bottom:12px}
-.we-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
-.we-box{background:rgba(0,0,0,.3);border-radius:8px;padding:11px}
-.we-name{font-size:12px;font-weight:700;margin-bottom:2px}
-.we-pts{font-family:var(--mono);font-size:18px;font-weight:700}
-.we-why{font-family:var(--mono);font-size:10px;color:var(--txt2);margin-top:5px;line-height:1.55}
-
-/* LOADING */
-.loading-row td{text-align:center;padding:40px;color:var(--txt2);font-family:var(--mono);font-size:12px}
-@keyframes blink{0%,100%{opacity:1}50%{opacity:.3}}
-.blink{animation:blink 1.4s infinite}
-@keyframes fin{from{opacity:0;transform:translateY(4px)}to{opacity:1;transform:none}}
-.fin{animation:fin .3s ease forwards}
-
-@media(max-width:900px){
-  .score-card{grid-template-columns:1fr;text-align:center;gap:18px}
-  .sc-num{font-size:72px}
-  .manual-grid{grid-template-columns:repeat(3,1fr)}
-  .we-grid{grid-template-columns:repeat(2,1fr)}
-  .desc-c{display:none}
-}
-@media(max-width:560px){
-  .manual-grid{grid-template-columns:repeat(2,1fr)}
-  .we-grid{grid-template-columns:1fr}
-  body{padding:12px}
-}
+tr:not(:last-child){border-bottom:1px solid #1a1a2c}
+.rs{padding:10px 14px;font-weight:700}.rd{padding:10px 14px;color:#777;font-size:.88em}
+.foot{text-align:center;font-size:.72em;color:#333;padding:20px 0 30px;line-height:1.8}
+@media(max-width:480px){.dc{display:none}}
 </style>
 </head>
 <body>
+<div class="hdr">
+  <span style="font-size:1.5em">📡</span>
+  <div><div class="logo">RiskRadar</div><div class="time">⏱ 2026-04-30 15:55 台灣時間</div></div>
+</div>
 <div class="wrap">
-
-<header class="hdr">
-  <div class="logo">
-    <div class="logo-ring">
-      <svg viewBox="0 0 17 17" fill="none">
-        <path d="M3 12.5 L6 7.5 L10 10.5 L14 3.5" stroke="#00d97e" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
-        <circle cx="14" cy="3.5" r="2" fill="#ff2255"/>
-      </svg>
-    </div>
-    <div>
-      <div class="logo-main">RISKRADAR V3</div>
-      <div class="logo-sub">28指標 · 6類別 · 100分專業加權 · 全自動更新</div>
-    </div>
+  <div class="sc">
+    <div class="sn">23</div>
+    <div class="sl">🟢 低風險</div>
+    <div class="sa">正常持倉，可評估加碼</div>
+    <div class="bb"><div class="bf" style="width:23%"></div></div>
   </div>
-  <div class="hdr-r">
-    資料時間<br><span id="updateTime">載入中...</span><br>
-    <span id="fetchStatus" style="color:var(--txt3)">─</span>
-  </div>
-</header>
-
-<div class="score-card">
-  <div class="sc-left">
-    <div class="sc-num" id="scoreNum">─</div>
-    <div class="sc-badge" id="scoreBadge">
-      <div class="sc-badge-dot" id="badgeDot"></div>
-      <div class="sc-badge-txt" id="badgeTxt">載入中</div>
-    </div>
-    <div class="sc-action" id="scoreAction">─</div>
-  </div>
-  <div>
-    <div class="gauge-lbl">風險量表 0=安全 → 100=危機</div>
-    <div class="gauge-track"><div class="gauge-pip" id="gaugePip" style="left:0%"></div></div>
-    <div class="gauge-scale"><span>0</span><span>25</span><span>50</span><span>75</span><span>100</span></div>
-    <div class="zone-bar">
-      <div class="zone" style="background:var(--green)"></div><div class="zone" style="background:var(--lime)"></div>
-      <div class="zone" style="background:var(--yellow)"></div><div class="zone" style="background:var(--orange)"></div>
-      <div class="zone" style="background:var(--red)"></div>
-    </div>
-    <div class="zone-row">
-      <div class="zone-l">0-20 低風險</div><div class="zone-l">21-40 輕微</div>
-      <div class="zone-l">41-60 中度</div><div class="zone-l">61-80 高警戒</div><div class="zone-l">81-100 危機</div>
-    </div>
-  </div>
-  <div class="sc-right">
-    <div class="brkd-title">各類別得分</div>
-    <div id="breakdown"></div>
+  <div class="sec">⚡ 風險信號詳情</div>
+  <div class="card"><table>
+    <thead><tr style="background:#111120;font-size:.7em;color:#333;text-transform:uppercase">
+      <th style="padding:8px 4px 8px 12px;width:36px"></th>
+      <th style="padding:8px 4px;text-align:left">指標</th>
+      <th style="padding:8px 4px;text-align:left">數值</th>
+      <th class="dc" style="padding:8px;text-align:left">說明</th>
+      <th style="padding:8px 12px 8px 4px;text-align:right">分數</th>
+    </tr></thead>
+    <tbody><tr>
+<td style="font-size:1.3em;padding:8px 4px 8px 12px">🟡</td>
+<td style="padding:8px 4px;color:#e0e0f0;font-size:.9em">VIX 恐慌指數</td>
+<td style="padding:8px 4px;font-family:monospace;color:#999;font-size:.84em">18.6</td>
+<td class="dc" style="padding:8px;color:#666;font-size:.82em">輕微波動</td>
+<td style="padding:8px 12px 8px 4px;color:#ff6d00;font-weight:700;text-align:right;font-size:.9em">+5</td>
+</tr><tr>
+<td style="font-size:1.3em;padding:8px 4px 8px 12px">🟢</td>
+<td style="padding:8px 4px;color:#e0e0f0;font-size:.9em">殖利率曲線(3M-10Y)</td>
+<td style="padding:8px 4px;font-family:monospace;color:#999;font-size:.84em">+0.83%</td>
+<td class="dc" style="padding:8px;color:#666;font-size:.82em">正常</td>
+<td style="padding:8px 12px 8px 4px;color:#00e676;font-weight:700;text-align:right;font-size:.9em">✓</td>
+</tr><tr>
+<td style="font-size:1.3em;padding:8px 4px 8px 12px">🟢</td>
+<td style="padding:8px 4px;color:#e0e0f0;font-size:.9em">SOX 半導體</td>
+<td style="padding:8px 4px;font-family:monospace;color:#999;font-size:.84em">10,271 (+2.35%)</td>
+<td class="dc" style="padding:8px;color:#666;font-size:.82em">平穩/走強</td>
+<td style="padding:8px 12px 8px 4px;color:#00e676;font-weight:700;text-align:right;font-size:.9em">✓</td>
+</tr><tr>
+<td style="font-size:1.3em;padding:8px 4px 8px 12px">🟢</td>
+<td style="padding:8px 4px;color:#e0e0f0;font-size:.9em">高收益債 HYG</td>
+<td style="padding:8px 4px;font-family:monospace;color:#999;font-size:.84em">$80.13 (-0.34%)</td>
+<td class="dc" style="padding:8px;color:#666;font-size:.82em">信用平穩</td>
+<td style="padding:8px 12px 8px 4px;color:#00e676;font-weight:700;text-align:right;font-size:.9em">✓</td>
+</tr><tr>
+<td style="font-size:1.3em;padding:8px 4px 8px 12px">🟢</td>
+<td style="padding:8px 4px;color:#e0e0f0;font-size:.9em">S&P500 vs 200MA</td>
+<td style="padding:8px 4px;font-family:monospace;color:#999;font-size:.84em">7,136（MA:6,719）</td>
+<td class="dc" style="padding:8px;color:#666;font-size:.82em">站上200日均線</td>
+<td style="padding:8px 12px 8px 4px;color:#00e676;font-weight:700;text-align:right;font-size:.9em">✓</td>
+</tr><tr>
+<td style="font-size:1.3em;padding:8px 4px 8px 12px">🟡</td>
+<td style="padding:8px 4px;color:#e0e0f0;font-size:.9em">黃金</td>
+<td style="padding:8px 4px;font-family:monospace;color:#999;font-size:.84em">$4,608 (+1.38%)</td>
+<td class="dc" style="padding:8px;color:#666;font-size:.82em">小漲</td>
+<td style="padding:8px 12px 8px 4px;color:#ff6d00;font-weight:700;text-align:right;font-size:.9em">+2</td>
+</tr><tr>
+<td style="font-size:1.3em;padding:8px 4px 8px 12px">🟢</td>
+<td style="padding:8px 4px;color:#e0e0f0;font-size:.9em">原油 WTI</td>
+<td style="padding:8px 4px;font-family:monospace;color:#999;font-size:.84em">$108.3 (+1.38%)</td>
+<td class="dc" style="padding:8px;color:#666;font-size:.82em">平穩</td>
+<td style="padding:8px 12px 8px 4px;color:#00e676;font-weight:700;text-align:right;font-size:.9em">✓</td>
+</tr><tr>
+<td style="font-size:1.3em;padding:8px 4px 8px 12px">🟢</td>
+<td style="padding:8px 4px;color:#e0e0f0;font-size:.9em">銅價（景氣計）</td>
+<td style="padding:8px 4px;font-family:monospace;color:#999;font-size:.84em">$5.98 (+1.74%)</td>
+<td class="dc" style="padding:8px;color:#666;font-size:.82em">平穩/上漲</td>
+<td style="padding:8px 12px 8px 4px;color:#00e676;font-weight:700;text-align:right;font-size:.9em">✓</td>
+</tr><tr>
+<td style="font-size:1.3em;padding:8px 4px 8px 12px">🟢</td>
+<td style="padding:8px 4px;color:#e0e0f0;font-size:.9em">日圓 USD/JPY</td>
+<td style="padding:8px 4px;font-family:monospace;color:#999;font-size:.84em">160.56 (+0.63%)</td>
+<td class="dc" style="padding:8px;color:#666;font-size:.82em">套利交易平穩</td>
+<td style="padding:8px 12px 8px 4px;color:#00e676;font-weight:700;text-align:right;font-size:.9em">✓</td>
+</tr><tr>
+<td style="font-size:1.3em;padding:8px 4px 8px 12px">🟢</td>
+<td style="padding:8px 4px;color:#e0e0f0;font-size:.9em">DXY 美元指數</td>
+<td style="padding:8px 4px;font-family:monospace;color:#999;font-size:.84em">98.91 (-0.01%)</td>
+<td class="dc" style="padding:8px;color:#666;font-size:.82em">平穩/走弱</td>
+<td style="padding:8px 12px 8px 4px;color:#00e676;font-weight:700;text-align:right;font-size:.9em">✓</td>
+</tr><tr>
+<td style="font-size:1.3em;padding:8px 4px 8px 12px">🔴</td>
+<td style="padding:8px 4px;color:#e0e0f0;font-size:.9em">三大法人買賣超</td>
+<td style="padding:8px 4px;font-family:monospace;color:#999;font-size:.84em">-531.7億</td>
+<td class="dc" style="padding:8px;color:#666;font-size:.82em">大幅賣超（資金撤出）</td>
+<td style="padding:8px 12px 8px 4px;color:#ff1744;font-weight:700;text-align:right;font-size:.9em">+15</td>
+</tr><tr>
+<td style="font-size:1.3em;padding:8px 4px 8px 12px">🟢</td>
+<td style="padding:8px 4px;color:#e0e0f0;font-size:.9em">台積電 2330</td>
+<td style="padding:8px 4px;font-family:monospace;color:#999;font-size:.84em">NT$2135（MA60:1911）</td>
+<td class="dc" style="padding:8px;color:#666;font-size:.82em">站上60MA</td>
+<td style="padding:8px 12px 8px 4px;color:#00e676;font-weight:700;text-align:right;font-size:.9em">✓</td>
+</tr><tr>
+<td style="font-size:1.3em;padding:8px 4px 8px 12px">🟢</td>
+<td style="padding:8px 4px;color:#e0e0f0;font-size:.9em">台股加權</td>
+<td style="padding:8px 4px;font-family:monospace;color:#999;font-size:.84em">38,927（MA20:36,644）</td>
+<td class="dc" style="padding:8px;color:#666;font-size:.82em">站上20日均線</td>
+<td style="padding:8px 12px 8px 4px;color:#00e676;font-weight:700;text-align:right;font-size:.9em">✓</td>
+</tr><tr>
+<td style="font-size:1.3em;padding:8px 4px 8px 12px">🟡</td>
+<td style="padding:8px 4px;color:#e0e0f0;font-size:.9em">台幣 USD/TWD</td>
+<td style="padding:8px 4px;font-family:monospace;color:#999;font-size:.84em">31.710 (+0.61%)</td>
+<td class="dc" style="padding:8px;color:#666;font-size:.82em">台幣小貶</td>
+<td style="padding:8px 12px 8px 4px;color:#ff6d00;font-weight:700;text-align:right;font-size:.9em">+1</td>
+</tr><tr>
+<td style="font-size:1.3em;padding:8px 4px 8px 12px">🟢</td>
+<td style="padding:8px 4px;color:#e0e0f0;font-size:.9em">上海綜指</td>
+<td style="padding:8px 4px;font-family:monospace;color:#999;font-size:.84em">4,112 (+0.11%)</td>
+<td class="dc" style="padding:8px;color:#666;font-size:.82em">平穩/上漲</td>
+<td style="padding:8px 12px 8px 4px;color:#00e676;font-weight:700;text-align:right;font-size:.9em">✓</td>
+</tr></tbody>
+  </table></div>
+  <div class="sec">📋 出場參考</div>
+  <div class="card"><table><tbody>
+    <tr><td class="rs" style="color:#00e676">0–25</td><td class="rd">🟢 低風險｜正常持倉，可評估加碼</td></tr>
+    <tr><td class="rs" style="color:#ffea00">26–45</td><td class="rd">🟡 中等風險｜留意訊號，縮減高風險部位</td></tr>
+    <tr><td class="rs" style="color:#ff6d00">46–65</td><td class="rd">🟠 中高風險｜分批獲利了結 30~50%</td></tr>
+    <tr><td class="rs" style="color:#ff4444">66–80</td><td class="rd">🔴 高風險｜出場 70%，僅留核心部位</td></tr>
+    <tr><td class="rs" style="color:#ff1744">81–100</td><td class="rd">⛔ 極高風險｜全數出場，持現金等待</td></tr>
+  </tbody></table></div>
+  <div class="foot">
+    RiskRadar｜數據：Yahoo Finance · CNN · 台灣證交所<br>
+    每日 08:00 / 18:00 台灣時間自動更新｜本頁僅供參考，非投資建議
   </div>
 </div>
-
-<div id="alertArea"></div>
-<div class="status-bar" id="statusBar"></div>
-
-<div class="sec-hdr">28 項加權風險指標</div>
-<table>
-  <thead><tr>
-    <th style="width:23%">指標</th>
-    <th style="width:17%">數值</th>
-    <th style="width:8%">漲跌</th>
-    <th style="width:25%">判讀</th>
-    <th style="width:9%;text-align:center">加權</th>
-    <th style="width:9%;text-align:right">得分</th>
-    <th style="width:9%;text-align:right">滿分</th>
-  </tr></thead>
-  <tbody id="tbody"><tr class="loading-row"><td colspan="7"><span class="blink">⚡ 連線 Yahoo Finance / FRED / 台灣證交所，全自動抓取中...</span></td></tr></tbody>
-</table>
-
-<div class="manual-box">
-  <div class="manual-hdr">📋 每月手動更新（僅此 5 項，其餘全自動）── 修改程式頂端 MANUAL 物件</div>
-  <div class="manual-grid" id="manualGrid"></div>
-</div>
-
-<div class="we">
-  <div class="we-hdr">⚖️ 專業加權設計邏輯（非等權，合計 100 分）</div>
-  <div class="we-grid">
-    <div class="we-box">
-      <div class="we-name" style="color:var(--orange)">A 美股恐慌 20分</div>
-      <div class="we-pts" style="color:var(--orange)">VIX↓6 MOVE↑5 P/C=4 SKEW=3 MA=2</div>
-      <div class="we-why">VIX 從 7→6：它是「反應型」指標，崩盤時才飆高，預測力有限。MOVE 升至 5：2023-2026 升息週期中，債市波動是真實壓力的先行指標。</div>
-    </div>
-    <div class="we-box">
-      <div class="we-name" style="color:var(--red)">B 信用貨幣 23分</div>
-      <div class="we-pts" style="color:var(--red)">殖利率=7 Fed=6 HYG↑5 TED↑3 FedWatch↓2</div>
-      <div class="we-why">殖利率曲線（7分）歷史預測 8/10 次衰退，是最強單一預測指標。HYG 升至 5：信用利差領先股市下跌 2-4 週。FedWatch 降至 2：遠期預期噪音多。</div>
-    </div>
-    <div class="we-box">
-      <div class="we-name" style="color:var(--yellow)">C 商品通膨 10分</div>
-      <div class="we-pts" style="color:var(--yellow)">黃金=3 金銅比=3 油=2 銅↓1 FAO=1</div>
-      <div class="we-why">銅從 2→1：金銅比（3分）已涵蓋銅的信息，避免雙重計算。黃金用「絕對水位」（$3,500/$4,500）而非日漲跌，更能反映長期避險情緒。</div>
-    </div>
-    <div class="we-box">
-      <div class="we-name" style="color:var(--red)">D 台股專屬 21分</div>
-      <div class="we-pts" style="color:var(--red)">外資=7 ADR=5 景氣燈=4 TWD=3 外銷=2</div>
-      <div class="we-why">外資（7分）佔台股成交量40%+，是唯一真正意義上的主力。外銷訂單升至 2：中長期基本面的先行指標，AI需求週期相關。景氣燈降至 4：它是滯後指標。</div>
-    </div>
-    <div class="we-box">
-      <div class="we-name" style="color:var(--lime)">E 全球景氣 10分</div>
-      <div class="we-pts" style="color:var(--lime)">SOX=3 日圓=3 DXY=2 法人=1 ISM=1</div>
-      <div class="we-why">SOX（3分）是台積電的鏡子，高相關。日圓（3分）是套利交易震源，2024/8 閃崩就是日圓升值引發的。DXY/法人/ISM 為輔助確認，各 1-2 分。</div>
-    </div>
-    <div class="we-box">
-      <div class="we-name" style="color:var(--purple)">F 市場估值 16分 ★</div>
-      <div class="we-pts" style="color:var(--purple)">巴菲特指標=9 Shiller CAPE=7</div>
-      <div class="we-why">原系統最大盲點：市場在歷史估值高點而系統無感。巴菲特指標（9分）為歷史紀錄 228%。Shiller CAPE（7分）從 FRED 全自動抓取，歷史均值 17，當前 35+。</div>
-    </div>
-  </div>
-</div>
-
-</div>
-
-<script>
-/* ================================================================
-   RiskRadar V3 ── 28 指標全自動股市風險預警系統
-   ──────────────────────────────────────────────
-   加權架構（100分非等權）：
-   A 美股恐慌  20：VIX=6, SKEW=3, P/C=4, MOVE=5, SPX-MA=2
-   B 信用貨幣  23：殖利率=7, Fed=6, HYG=5, TED=3, FedWatch=2
-   C 商品通膨  10：黃金=3, 金銅比=3, 原油=2, 銅=1, FAO=1
-   D 台股專屬  21：外資=7, ADR=5, 景氣燈=4, TWD=3, 外銷=2
-   E 全球景氣  10：SOX=3, 日圓=3, DXY=2, 法人=1, ISM=1
-   F 市場估值  16：巴菲特=9, ShillerCAPE=7
-   ──────────────────────────────────────────────
-   自動來源：Yahoo Finance · FRED · 台灣證交所(TWSE)
-   手動來源（每月更新）：MOVE · 景氣燈號 · ISM · 外銷訂單 · 巴菲特指標
-   ================================================================ */
-
-// ══════════════════════════════════════════════════
-// ⚙️ 每月手動更新區（只有這 5 個）
-// ══════════════════════════════════════════════════
-const MANUAL = {
-  // MOVE Index（ICE BofA 債市波動率，每日）
-  // 來源：https://fred.stlouisfed.org 搜尋 "MOVE"，或 WSJ Markets
-  moveIndex     : 92,       // <80平靜，80-100正常，>125危險
-
-  // 台灣景氣燈號（每月27日，國發會公布）
-  // 來源：https://index.ndc.gov.tw
-  twLightScore  : 39,       // 38-45=🔴紅/32-37=🟠黃紅/23-31=🟢綠/17-22=🔵黃藍/<17=🔵藍
-  twLightMonth  : '2026-03',
-
-  // ISM 製造業 PMI（每月第一工作日）
-  // 來源：https://www.ismworld.org
-  ismPMI        : 49.0,     // >50擴張，<50收縮
-
-  // 台灣外銷訂單 YoY（每月25日，經濟部統計處）
-  // 來源：https://www.moea.gov.tw
-  twExportYoY   : 28.5,     // %
-
-  // 巴菲特指標（每月，GuruFocus 查詢）
-  // 來源：https://www.gurufocus.com/stock-market-valuations.php
-  // 2026-04-27：228%（歷史紀錄高位，合理值75-90%，>165%明顯高估）
-  buffettPct    : 228,      // %
-};
-
-// ══════════════════════════════════════════════════
-// 🌐 自動抓取設定
-// ══════════════════════════════════════════════════
-const PROXY = 'https://api.allorigins.win/get?url=';
-const YF     = 'https://query2.finance.yahoo.com/v8/finance/chart/';
-
-const YAHOO_SYMS = {
-  vix    : '^VIX',
-  skew   : '^SKEW',
-  spx    : '^GSPC',
-  sox    : '^SOX',
-  hyg    : 'HYG',
-  gold   : 'GC=F',
-  oil    : 'CL=F',
-  copper : 'HG=F',
-  usdjpy : 'JPY=X',
-  dxy    : 'DX-Y.NYB',
-  tsm    : 'TSM',       // 台積電 ADR（1 ADR = 5 股）
-  tw2330 : '2330.TW',   // 台積電台股（計算 ADR 折溢價）
-  usdtwd : 'TWD=X',     // 1 USD = X TWD
-  tnx    : '^TNX',      // 10Y 美債殖利率
-  irx    : '^IRX',      // 3M 美債殖利率
-};
-
-// 全域資料快取
-let Q     = {};   // Yahoo 即時
-let AUTO  = {};   // FRED / TWSE 自動抓取
-let STATUS = {};  // 抓取狀態
-
-// ──── Yahoo Finance 抓取 ────
-async function fetchYahoo(sym) {
-  try {
-    const url = `${YF}${encodeURIComponent(sym)}?interval=1d&range=5d`;
-    const r   = await fetch(`${PROXY}${encodeURIComponent(url)}`);
-    const j   = await r.json();
-    const d   = JSON.parse(j.contents);
-    const res = d.chart.result[0];
-    const cls = res.indicators.quote[0].close.filter(x => x != null);
-    const p   = cls[cls.length - 1];
-    const pp  = cls.length > 1 ? cls[cls.length - 2] : p;
-    return { price: p, pct: ((p - pp) / pp) * 100 };
-  } catch(e) { return { price: null, pct: null }; }
-}
-
-// ──── FRED CSV 抓取 ────
-async function fetchFRED(seriesId) {
-  try {
-    const url = `https://fred.stlouisfed.org/graph/fredgraph.csv?id=${seriesId}`;
-    const r   = await fetch(`${PROXY}${encodeURIComponent(url)}`);
-    const j   = await r.json();
-    const lines = j.contents.trim().split('\n');
-    for (let i = lines.length - 1; i >= 1; i--) {
-      const parts = lines[i].split(',');
-      const val   = parts[1] && parts[1].trim();
-      if (val && val !== '.' && !isNaN(val)) {
-        return { date: parts[0].trim(), value: parseFloat(val) };
-      }
-    }
-  } catch(e) {}
-  return null;
-}
-
-// ──── 台灣證交所三大法人 ────
-async function fetchTWSE() {
-  for (let back = 0; back < 6; back++) {
-    try {
-      const d = new Date();
-      d.setDate(d.getDate() - back);
-      const ds = d.toISOString().slice(0, 10).replace(/-/g, '');
-      const url = `https://www.twse.com.tw/fund/T86?response=json&date=${ds}&selectType=ALL`;
-      const r   = await fetch(`${PROXY}${encodeURIComponent(url)}`);
-      const j   = await r.json();
-      const parsed = JSON.parse(j.contents);
-      if (parsed.stat !== 'OK' || !parsed.data?.length) continue;
-
-      const parseAmt = s => {
-        if (!s) return 0;
-        const clean = s.replace(/,/g, '').trim();
-        const m = clean.match(/([買賣]超)?\s*([\d.]+)/);
-        if (!m) return 0;
-        const v = parseFloat(m[2]) / 100000; // 千元→億
-        return clean.includes('賣超') ? -v : v;
-      };
-
-      let foreignNet = 0, threeNet = 0;
-      for (const row of parsed.data) {
-        const name = row[0] || '';
-        const amt  = parseAmt(row[row.length - 1]);
-        if (name.includes('外資')) foreignNet += amt;
-        if (!name.includes('避險')) threeNet += amt; // 含自營商自行+避險+投信+外資
-      }
-      return { foreignNet: Math.round(foreignNet), threeNet: Math.round(threeNet), date: parsed.date };
-    } catch(e) { continue; }
-  }
-  return null;
-}
-
-// ──── 全部並行抓取 ────
-async function fetchAll() {
-  const t0 = Date.now();
-
-  // 1. Yahoo Finance（並行）
-  const yahooTasks = Object.entries(YAHOO_SYMS).map(async([k, s]) => {
-    const d = await fetchYahoo(s);
-    Q[k]   = d;
-    STATUS[`yahoo_${k}`] = d.price != null ? 'ok' : 'fail';
-  });
-
-  // 2. FRED（並行）
-  const fredTasks = [
-    fetchFRED('FEDFUNDS').then(v => { AUTO.fedRate = v; STATUS.fedRate = v ? 'ok' : 'fail'; }),
-    fetchFRED('CAPE').then(v     => { AUTO.cape    = v; STATUS.cape    = v ? 'ok' : 'fail'; }),
-  ];
-
-  // 3. TWSE（單獨）
-  const twseProm = fetchTWSE().then(v => {
-    AUTO.twse  = v;
-    STATUS.twse = v ? 'ok' : 'fail';
-  });
-
-  await Promise.allSettled([...yahooTasks, ...fredTasks, twseProm]);
-
-  const ms = Date.now() - t0;
-  const okN  = Object.values(STATUS).filter(s => s === 'ok').length;
-  const failN = Object.values(STATUS).filter(s => s === 'fail').length;
-  document.getElementById('fetchStatus').textContent =
-    `自動：${okN} 項成功 / ${failN} 項失敗 (${ms}ms)`;
-  document.getElementById('updateTime').textContent =
-    new Date().toLocaleString('zh-TW', {hour12:false,year:'numeric',month:'2-digit',day:'2-digit',hour:'2-digit',minute:'2-digit'});
-}
-
-// ══════════════════════════════════════════════════
-// 📊 28 項指標定義
-// ══════════════════════════════════════════════════
-function buildInds() {
-  const px  = k => Q[k]?.price;
-  const pc  = k => Q[k]?.pct;
-  const f   = (n, d=2) => n != null ? n.toFixed(d) : '─';
-  const fp  = p => p == null ? '' : (p >= 0 ? `+${p.toFixed(2)}%` : `${p.toFixed(2)}%`);
-
-  // 衍生計算
-  const t10    = px('tnx'), t3m = px('irx');
-  const spread = (t10 && t3m) ? t10 - t3m : null;
-  const gld    = px('gold'), cop = px('copper');
-  const gcR    = (gld && cop) ? gld / cop : null;
-  const twd    = px('usdtwd');
-  const tsm    = px('tsm');
-  const tw2330 = px('tw2330');
-  // ADR折溢價 = TSM ADR(USD) × USD/TWD / 5 / 2330台股 - 1
-  const adrPrem = (tsm && twd && tw2330 && tw2330 > 0)
-    ? ((tsm * twd / 5) / tw2330 - 1) * 100 : null;
-
-  // 自動數據
-  const fedRateAuto = AUTO.fedRate?.value ?? null;
-  const capeAuto    = AUTO.cape?.value    ?? null;
-  const foreignNet  = AUTO.twse?.foreignNet ?? null;
-  const threeNet    = AUTO.twse?.threeNet   ?? null;
-
-  // 聯準會政策判斷（基於自動抓到的利率）
-  // FEDFUNDS 是每月平均，近似最新利率
-  const fedR = fedRateAuto ?? 4.25;
-  // 簡單政策判斷：無法自動判斷 hike/cut，用利率水位代替
-  const fedDesc = fedR > 5.5 ? '激進升息，流動性緊縮' : fedR > 4.5 ? '較高利率水位，保持警覺' : fedR > 3 ? '中性利率水位' : '寬鬆利率，流動性充裕';
-  const fedScore = fedR > 5.5 ? 5 : fedR > 4.5 ? 2 : fedR > 3 ? 1 : 0;
-
-  const lgtTxt = s => s >= 38 ? '🔴紅燈' : s >= 32 ? '🟠黃紅燈' : s >= 23 ? '🟢綠燈' : s >= 17 ? '🔵黃藍燈' : '🔵藍燈';
-
-  return [
-    // ═══ A 美股恐慌（20分）═══
-    {
-      cat:'A', catName:'美股恐慌偵測',
-      name:'VIX 恐慌指數', max:6, auto:true,
-      val:f(px('vix'),1), pct:fp(pc('vix')), pctV:pc('vix'),
-      desc:(p => !p?'─':p<15?'極度平靜（過樂觀，逆向警示）':p<20?'輕微波動，正常':p<25?'市場偏緊張':p<30?'明顯恐慌':'極度恐慌')(px('vix')),
-      score:(p => !p?0:p<15?1:p<20?2:p<25?4:p<30?5:6)(px('vix')),
-    },
-    {
-      cat:'A', name:'SKEW 尾部風險', max:3, auto:true,
-      val:f(px('skew'),0), pct:fp(pc('skew')), pctV:pc('skew'),
-      desc:(p => !p?'─':p<110?'尾部風險正常':p<125?'輕微尾部風險':p<140?'機構悄悄買保護':'高尾部風險警示')(px('skew')),
-      score:(p => !p?0:p<110?0:p<125?1:p<140?2:3)(px('skew')),
-    },
-    {
-      cat:'A', name:'Put/Call Ratio', max:4, auto:false,
-      val:MANUAL.moveIndex.toString(), pct:'', pctV:null, // 注：P/C用MANUAL.putCallRatio
-      // 由於CBOE P/C無免費API，此欄顯示最近值，計分仍使用下方數值
-      val:(()=>'0.79')(), // 2026-04-24 CBOE Total
-      desc:'選擇權情緒（2026-04-24 CBOE Total 0.79，正常範圍）',
-      score:1, // 0.79 正常偏樂觀 → 輕微1分
-    },
-    {
-      cat:'A', name:'MOVE Index（債市VIX）', max:5, auto:false,
-      val:`${MANUAL.moveIndex}`,pct:'',pctV:null,
-      desc:MANUAL.moveIndex<80?'債市極靜':MANUAL.moveIndex<100?'債市正常':MANUAL.moveIndex<125?'債市緊張（警戒）':'債市嚴重動盪',
-      score:(i=>i<80?0:i<100?1:i<125?3:5)(MANUAL.moveIndex),
-    },
-    {
-      cat:'A', name:'S&P500 vs 200MA', max:2, auto:true,
-      val:px('spx')?`${Math.round(px('spx'))} (MA:${M_SPX200})`:'─',
-      pct:fp(pc('spx')), pctV:pc('spx'),
-      desc:(p=>{if(!p)return'─';const d=(p-M_SPX200)/M_SPX200*100;return d>5?`健康站上 +${d.toFixed(1)}%`:d>0?`剛站上MA`:d>-5?`跌破MA ${d.toFixed(1)}%`:`明顯跌破 ${d.toFixed(1)}%`;})(px('spx')),
-      score:(p=>{if(!p)return 0;const d=(p-M_SPX200)/M_SPX200;return d>0?0:d>-.05?1:2;})(px('spx')),
-    },
-
-    // ═══ B 信用與貨幣（23分）═══
-    {
-      cat:'B', catName:'信用與貨幣政策',
-      name:'殖利率曲線 3M-10Y', max:7, auto:true,
-      val:spread!=null?(spread>=0?`+${f(spread,2)}%`:`${f(spread,2)}%`):'─', pct:'', pctV:null,
-      desc:spread==null?'─':spread>0.5?'殖利率曲線正常':spread>0?'曲線趨平（注意）':spread>-0.5?'輕微倒掛（衰退預警）':'嚴重倒掛（衰退高風險）',
-      score:(s=>s==null?0:s>0.5?0:s>0?2:s>-0.5?4:7)(spread),
-    },
-    {
-      cat:'B', name:'聯準會基準利率', max:6, auto:true,
-      val:fedRateAuto!=null?`${fedR.toFixed(2)}%（FRED自動）`:`${fedR.toFixed(2)}% (手動)`,
-      pct:'', pctV:null,
-      desc:fedDesc, score:fedScore,
-    },
-    {
-      cat:'B', name:'CME 降息預期', max:2, auto:false,
-      val:'今年預期降息 2 次', pct:'', pctV:null,
-      desc:'CME FedWatch：市場預期 2026 年降息 2 次（溫和寬鬆）',
-      score:1,
-      // P/C與FedWatch都是每日需查詢但無免費API，固定最新已知值並標示
-    },
-    {
-      cat:'B', name:'高收益債 HYG', max:5, auto:true,
-      val:px('hyg')?`$${f(px('hyg'),2)}`:'─', pct:fp(pc('hyg')), pctV:pc('hyg'),
-      desc:(p=>!p?'─':p>82?'信用市場平穩':p>78?'信用輕微收縮':p>73?'信用明顯收縮（警示）':'信用危機警戒')(px('hyg')),
-      score:(p=>!p?0:p>82?0:p>78?1:p>73?3:5)(px('hyg')),
-    },
-    {
-      cat:'B', name:'TED Spread 銀行壓力', max:3, auto:false,
-      val:'0.28%（最新已知）', pct:'', pctV:null,
-      desc:'銀行流動性充裕（<0.5%正常，>1.0%危險）',
-      score:0,
-    },
-
-    // ═══ C 商品與通膨（10分）═══
-    {
-      cat:'C', catName:'商品與通膨',
-      name:'黃金（絕對水位計）', max:3, auto:true,
-      val:px('gold')?`$${Math.round(px('gold'))}`:'─', pct:fp(pc('gold')), pctV:pc('gold'),
-      desc:(p=>!p?'─':p>5000?'黃金歷史新高（極度避險/通膨恐慌）':p>4500?'黃金高位，強烈避險信號':p>3500?'黃金偏高，避險情緒升溫':p>2500?'黃金正常區間':'黃金偏低')(px('gold')),
-      score:(p=>!p?0:p>5000?3:p>4500?2:p>3500?1:0)(px('gold')),
-    },
-    {
-      cat:'C', name:'黃金/銅比（Risk-On/Off）', max:3, auto:true,
-      val:gcR!=null?Math.round(gcR).toString():'─', pct:'', pctV:null,
-      desc:gcR==null?'─':gcR<700?'Risk-On，景氣樂觀':gcR<900?'中性偏樂觀':gcR<1100?'偏謹慎，Risk-Off傾向':'Risk-Off，避險主導',
-      score:(r=>!r?0:r<700?0:r<900?1:r<1100?2:3)(gcR),
-    },
-    {
-      cat:'C', name:'原油 WTI', max:2, auto:true,
-      val:px('oil')?`$${f(px('oil'),1)}`:'─', pct:fp(pc('oil')), pctV:pc('oil'),
-      desc:(p=>!p?'─':p>110?'油價過高，通膨壓力大':p>90?'油價偏高，地緣溢價':p<60?'低油價，景氣疑慮':'油價平穩')(px('oil')),
-      score:(p=>!p?0:p>110?2:p>90?1:p<55?1:0)(px('oil')),
-    },
-    {
-      cat:'C', name:'銅價（景氣溫度計）', max:1, auto:true,
-      val:px('copper')?`$${f(px('copper'),2)}/lb`:'─', pct:fp(pc('copper')), pctV:pc('copper'),
-      desc:(pct=>pct==null?'─':pct>2?'銅漲，景氣擴張':pct<-5?'銅急跌，景氣轉弱':pct<-2?'銅走弱，景氣降溫':'銅價平穩')(pc('copper')),
-      score:(pct=>pct==null?0:pct<-5?1:0)(pc('copper')),
-    },
-    {
-      cat:'C', name:'FAO 糧食價格指數', max:1, auto:false,
-      val:`128.5（YoY +${MANUAL.ismPMI<50?'1.0':'1.0'}%）`, pct:'', pctV:null,
-      desc:'糧食通膨溫和（2026-03，YoY +1.0%），暫不構成貨幣政策壓力',
-      score:0,
-    },
-
-    // ═══ D 台股專屬（21分）═══
-    {
-      cat:'D', catName:'台股專屬指標',
-      name:'外資在台買賣超', max:7, auto:true,
-      val:foreignNet!=null?`${foreignNet>=0?'+':''}${foreignNet}億（自動）`:
-          `─ 使用最近已知值`,
-      pct:'', pctV:null,
-      desc:(f=>f==null?'TWSE數據載入中':f>200?'外資大買（強勢多頭）':f>0?'外資小幅買超':f>-200?'外資輕微賣超（正常）':f>-500?'外資明顯賣超（警戒）':'外資大幅撤出（高警戒）')(foreignNet),
-      score:(f=>f==null?2:f>200?0:f>0?1:f>-200?2:f>-500?4:7)(foreignNet),
-    },
-    {
-      cat:'D', name:'台積電 ADR 折溢價', max:5, auto:true,
-      val:adrPrem!=null?(adrPrem>=0?`+${f(adrPrem,1)}%`:`${f(adrPrem,1)}%`):
-          tw2330?`2330: NT$${Math.round(tw2330)}（ADR計算中）`:'需 TSM & 2330.TW 數據',
-      pct:'', pctV:null,
-      desc:adrPrem==null?'ADR折溢價計算中（需TSM ADR + 2330.TW + USD/TWD）':
-           adrPrem>5?'ADR大幅溢價（外資看漲台積電）':adrPrem>-2?'ADR正常範圍（±2%）':
-           adrPrem>-8?'ADR折價，外資謹慎':'ADR大幅折價，外資正在撤出',
-      score:(p=>p==null?1:p>2?0:p>-2?1:p>-5?3:5)(adrPrem),
-    },
-    {
-      cat:'D', name:'台灣景氣燈號', max:4, auto:false,
-      val:`${MANUAL.twLightScore}分 ${lgtTxt(MANUAL.twLightScore)} (${MANUAL.twLightMonth})`,
-      pct:'', pctV:null,
-      desc:(s=>s>=38?'景氣過熱（紅燈）：景氣擴張過度，股市修正風險偏高':s>=32?'景氣活絡（黃紅）：正向但需注意過熱':s>=23?'景氣穩健（綠燈）':s>=17?'景氣欠佳（黃藍）':'景氣低迷（藍燈），底部訊號')(MANUAL.twLightScore),
-      score:(s=>s>=38?3:s>=32?1:s>=23?0:s>=17?1:4)(MANUAL.twLightScore),
-    },
-    {
-      cat:'D', name:'USD/TWD 匯率', max:3, auto:true,
-      val:twd!=null?`${f(twd,2)}`:'─', pct:fp(pc('usdtwd')), pctV:pc('usdtwd'),
-      desc:(p=>!p?'─':p<31?'新台幣強勢（資金流入）':p<32.5?'正常區間':p<33.5?'新台幣走弱（外資賣台股）':'新台幣大幅貶值（警戒）')(twd),
-      score:(p=>!p?0:p<32.5?0:p<33?1:p<34?2:3)(twd),
-    },
-    {
-      cat:'D', name:'台灣外銷訂單 YoY', max:2, auto:false,
-      val:`${MANUAL.twExportYoY>=0?'+':''}${MANUAL.twExportYoY}%`,
-      pct:'', pctV:null,
-      desc:MANUAL.twExportYoY>15?'外銷強勁（AI/HPC需求帶動）':MANUAL.twExportYoY>5?'溫和成長':MANUAL.twExportYoY>0?'微幅成長':MANUAL.twExportYoY>-10?'外銷轉負，景氣降溫':'外銷大幅衰退',
-      score:(r=>r>5?0:r>0?0:r>-10?1:2)(MANUAL.twExportYoY),
-    },
-
-    // ═══ E 全球景氣（10分）═══
-    {
-      cat:'E', catName:'全球景氣監測',
-      name:'SOX 半導體 vs 200MA', max:3, auto:true,
-      val:px('sox')?`${Math.round(px('sox'))} (MA:${M_SOX200})`:'─',
-      pct:fp(pc('sox')), pctV:pc('sox'),
-      desc:(p=>{if(!p)return'─';const d=(p-M_SOX200)/M_SOX200*100;return d>5?`健康站上MA (+${d.toFixed(1)}%)`:d>0?`站上MA`:d>-5?`跌破MA (${d.toFixed(1)}%)`:`明顯跌破 (${d.toFixed(1)}%)`;})(px('sox')),
-      score:(p=>{if(!p)return 0;const d=(p-M_SOX200)/M_SOX200;return d>0?0:d>-.05?2:3;})(px('sox')),
-    },
-    {
-      cat:'E', name:'日圓 USD/JPY（套利計）', max:3, auto:true,
-      val:px('usdjpy')?f(px('usdjpy'),2):'─', pct:fp(pc('usdjpy')), pctV:pc('usdjpy'),
-      desc:(p=>!p?'─':p<140?'日圓偏強（注意套利平倉，閃崩風險）':p<150?'套利交易平穩':p<158?'套利過度擴張（尾部風險）':'日圓極弱（黑天鵝風險）')(px('usdjpy')),
-      score:(p=>!p?0:p<140?1:p<150?0:p<158?1:3)(px('usdjpy')),
-    },
-    {
-      cat:'E', name:'DXY 美元指數', max:2, auto:true,
-      val:px('dxy')?f(px('dxy'),2):'─', pct:fp(pc('dxy')), pctV:pc('dxy'),
-      desc:(p=>!p?'─':p<95?'美元偏弱，新興受益':p<103?'美元正常區間':p<108?'美元偏強，新興承壓':'美元過強，全球流動性緊縮')(px('dxy')),
-      score:(p=>!p?0:p<103?0:p<108?1:2)(px('dxy')),
-    },
-    {
-      cat:'E', name:'三大法人買賣超', max:1, auto:true,
-      val:threeNet!=null?`${threeNet>=0?'+':''}${threeNet}億（TWSE自動）`:'─（TWSE載入中）',
-      pct:'', pctV:null,
-      desc:(n=>n==null?'TWSE數據載入中':n>0?'法人整體買超':n>-400?'小幅賣出（正常）':n>-800?'明顯賣超':'大幅撤出')(threeNet),
-      score:(n=>n==null?0:n>-400?0:1)(threeNet),
-    },
-    {
-      cat:'E', name:'ISM 製造業 PMI', max:1, auto:false,
-      val:`${MANUAL.ismPMI.toFixed(1)}`, pct:'', pctV:null,
-      desc:MANUAL.ismPMI>55?'製造業強勁擴張':MANUAL.ismPMI>50?'溫和擴張':MANUAL.ismPMI>45?'輕微收縮':'明顯衰退（<45高風險）',
-      score:(p=>p>50?0:1)(MANUAL.ismPMI),
-    },
-
-    // ═══ F 市場估值（16分）★ ═══
-    {
-      cat:'F', catName:'市場估值（★新增，解決估值盲點）', isV:true,
-      name:'巴菲特指標（市值/GDP）', max:9, auto:false,
-      val:`${MANUAL.buffettPct}%（歷史最高紀錄）`,pct:'',pctV:null,
-      desc:(bi=>bi<90?'估值合理甚至偏低':bi<120?'估值略偏高':bi<165?'明顯高估（巴菲特警戒線破）':bi<200?'嚴重高估（歷史危險區）':`極度高估（${bi}%，歷史紀錄級，合理值75-90%）`)(MANUAL.buffettPct),
-      score:(bi=>bi<90?0:bi<120?1:bi<165?3:bi<200?6:9)(MANUAL.buffettPct),
-    },
-    {
-      cat:'F', isV:true,
-      name:'Shiller CAPE（席勒PE10）', max:7, auto:true,
-      val:capeAuto?`${f(capeAuto.value,1)}（FRED自動，${capeAuto.date}）`:'─（FRED載入中）',
-      pct:'', pctV:null,
-      desc:(c=>!c?'FRED數據載入中':c<20?'CAPE低於均值，估值合理':c<25?'CAPE略高，普通':c<30?'CAPE高估偏高':c<35?'CAPE顯著高估（接近泡沫水位）':`CAPE ${f(c,1)}，嚴重高估（歷史均值17，當前遠超）`)(capeAuto?.value),
-      score:(c=>!c?3:c<20?0:c<25?1:c<30?3:c<35?5:c<40?6:7)(capeAuto?.value),
-    },
-  ];
-}
-
-// 200MA 設定（每月更新）
-const M_SPX200 = 6680;
-const M_SOX200 = 9800;
-
-// ══════════════════════════════════════════════════
-// 🎨 工具
-// ══════════════════════════════════════════════════
-const CAT_META = {
-  A:{name:'美股恐慌',max:20}, B:{name:'信用貨幣',max:23},
-  C:{name:'商品通膨',max:10}, D:{name:'台股專屬',max:21},
-  E:{name:'全球景氣',max:10}, F:{name:'市場估值',max:16},
-};
-// 總計：20+23+10+21+10+16=100
-
-function rc(s,m){const r=s/m;return r===0?'var(--green)':r<=.25?'var(--lime)':r<=.5?'var(--yellow)':r<=.75?'var(--orange)':'var(--red)';}
-function sc(s,m){const r=s/m;return r===0?'c0':r<=.25?'c1':r<=.5?'c2':r<=.75?'c3':'c4';}
-function wc(max){return max>=7?'var(--red)':max>=5?'var(--orange)':max>=3?'var(--yellow)':'var(--lime)';}
-function meta(s){
-  if(s<=20)return{c:'var(--green)',label:'低風險',action:'正常持倉，可評估加碼'};
-  if(s<=40)return{c:'var(--lime)',label:'輕微偏高',action:'謹慎持倉，減少新開倉'};
-  if(s<=60)return{c:'var(--yellow)',label:'中度風險',action:'縮減倉位，設好止損'};
-  if(s<=80)return{c:'var(--orange)',label:'高度警戒',action:'大幅減碼，保留現金'};
-  return{c:'var(--red)',label:'極度危險',action:'清倉觀望，全面防禦'};
-}
-function pspan(pctV,pctStr){
-  if(!pctStr)return'─';
-  const c=pctV>0?'var(--green)':pctV<0?'var(--red)':'var(--txt2)';
-  return`<span style="color:${c}">${pctStr}</span>`;
-}
-
-// ══════════════════════════════════════════════════
-// 🖥️ 渲染
-// ══════════════════════════════════════════════════
-function render(){
-  const inds = buildInds();
-  const total = Math.min(inds.reduce((s,i)=>s+(i.score||0),0), 100);
-  const cats  = {A:0,B:0,C:0,D:0,E:0,F:0};
-  inds.forEach(i => cats[i.cat] += (i.score||0));
-
-  // Score card
-  const {c, label, action} = meta(total);
-  document.getElementById('scoreNum').textContent  = total;
-  document.getElementById('scoreNum').style.color  = c;
-  const badge = document.getElementById('scoreBadge');
-  badge.style.color       = c;
-  badge.style.borderColor = c+'55';
-  badge.style.background  = c+'15';
-  document.getElementById('badgeDot').style.background = c;
-  document.getElementById('badgeTxt').textContent  = label;
-  document.getElementById('scoreAction').textContent = action;
-  document.getElementById('gaugePip').style.left   = `${total}%`;
-
-  // Breakdown
-  document.getElementById('breakdown').innerHTML = Object.entries(CAT_META).map(([k,m])=>{
-    const s=cats[k], cl=rc(s,m.max), w=(s/m.max*100).toFixed(0);
-    const star = k==='F'?'<span style="color:var(--purple);font-size:9px"> ★</span>':'';
-    return`<div class="brkd-row">
-      <div class="brkd-name" style="color:${cl}">${m.name}${star}</div>
-      <div class="brkd-track"><div class="brkd-fill" style="width:${w}%;background:${cl}"></div></div>
-      <div class="brkd-score" style="color:${cl}">${s}</div>
-      <div class="brkd-max">/${m.max}</div>
-    </div>`;
-  }).join('');
-
-  // Alert
-  const alerts=[];
-  const bi=MANUAL.buffettPct, cape=AUTO.cape?.value;
-  if(bi>=200) alerts.push({t:'red',m:`🚨 巴菲特指標 ${bi}%（歷史紀錄高位，合理值75-90%）。Shiller CAPE ${cape?cape.toFixed(1):'─'}（歷史均值17）。這是長期估值泡沫訊號——不代表明天崩盤，但未來10年預期回報率極低，下行空間大。`});
-  else if(bi>=165) alerts.push({t:'yellow',m:`⚠️ 巴菲特指標 ${bi}%，市場估值明顯高估（歷史警戒線 165%）。`});
-  if(MANUAL.twLightScore>=38) alerts.push({t:'yellow',m:`📊 台灣景氣燈號 ${MANUAL.twLightScore}分 🔴紅燈（${MANUAL.twLightMonth}），景氣過熱期，歷史上紅燈後股市常出現修正整理。`});
-  document.getElementById('alertArea').innerHTML = alerts.map(a=>
-    `<div class="alert-box alert-${a.t}">${a.m}</div>`).join('');
-
-  // Status bar
-  const autoN  = inds.filter(i=>i.auto).length;
-  const manN   = inds.filter(i=>!i.auto).length;
-  const fredOk = AUTO.fedRate||AUTO.cape;
-  const twseOk = AUTO.twse;
-  document.getElementById('statusBar').innerHTML =
-    `<div class="status-pill s-auto">🟢 Yahoo Finance（${Object.keys(YAHOO_SYMS).length}指標即時）</div>` +
-    `<div class="status-pill ${fredOk?'s-ok':'s-fail'}">📊 FRED美聯儲資料庫（${fredOk?'已連線':'失敗'}）</div>` +
-    `<div class="status-pill ${twseOk?'s-ok':'s-fail'}">🇹🇼 台灣證交所TWSE（${twseOk?`${AUTO.twse.date}`:'失敗，用最近值'}）</div>` +
-    `<div class="status-pill s-manual">📋 月更5項（MOVE·景氣燈·ISM·外銷·巴菲特）</div>`;
-
-  // Table
-  let html='', curCat=null;
-  inds.forEach(ind => {
-    if(ind.cat !== curCat){
-      curCat = ind.cat;
-      const cm=CAT_META[ind.cat], cs=cats[ind.cat], cl=ind.isV?'var(--purple)':rc(cs,cm.max);
-      const cls=ind.isV?'cat-sep cat-v':'cat-sep';
-      const star=ind.isV?'<span style="color:var(--purple)"> ★ 新增估值維度（原系統最大盲點）</span>':'';
-      html+=`<tr class="${cls}"><td colspan="7">
-        <span style="color:${cl}">▶</span>  ${ind.catName}${star}
-        <span style="float:right;color:${cl};font-family:var(--mono)">${cs}/${cm.max}（佔比${cm.max}%）</span>
-      </td></tr>`;
-    }
-    const s=ind.score||0, dc=ind.isV?'var(--purple)':rc(s,ind.max);
-    const tag=ind.isV?'<span class="tag tv">★估值</span>':ind.auto?'<span class="tag ta">自動</span>':'<span class="tag tm">手動</span>';
-    const W=ind.isV?'var(--purple)':wc(ind.max);
-    const wBarPx=Math.round(ind.max/9*56);
-    const sd=s===0?'<span class="c0">✓</span>':`<span class="${sc(s,ind.max)}">+${s}</span>`;
-    html+=`<tr class="ind-row fin">
-      <td><div class="name-cell"><div class="sdot" style="background:${dc}"></div>${ind.name} ${tag}</div></td>
-      <td class="val-c">${ind.val}</td>
-      <td>${pspan(ind.pctV,ind.pct)}</td>
-      <td class="desc-c">${ind.desc}</td>
-      <td class="wt-c"><div class="wt-inner">
-        <div class="wt-num" style="color:${W}">${ind.max}pt</div>
-        <div class="wt-bar" style="width:${wBarPx}px;background:${W}"></div>
-      </div></td>
-      <td class="sc-c">${sd}</td>
-      <td class="mx-c">/${ind.max}</td>
-    </tr>`;
-  });
-  document.getElementById('tbody').innerHTML = html;
-
-  // Manual panel
-  document.getElementById('manualGrid').innerHTML = [
-    {k:'MOVE Index',    v:`${MANUAL.moveIndex}`,          src:'每日 · ICE BofA / WSJ'},
-    {k:'景氣燈號',      v:`${MANUAL.twLightScore}分 ${MANUAL.twLightMonth}`,  src:'每月 · index.ndc.gov.tw'},
-    {k:'ISM PMI',       v:`${MANUAL.ismPMI}`,             src:'每月 · ismworld.org'},
-    {k:'外銷訂單 YoY',  v:`+${MANUAL.twExportYoY}%`,      src:'每月 · moea.gov.tw'},
-    {k:'★巴菲特指標',   v:`${MANUAL.buffettPct}%（歷史高）`, src:'每月 · gurufocus.com'},
-  ].map(d=>`<div class="m-box">
-    <div class="m-key" style="${d.k.startsWith('★')?'color:var(--purple)':''}">${d.k}</div>
-    <div class="m-val">${d.v}</div>
-    <div class="m-src">📍 ${d.src}</div>
-  </div>`).join('');
-}
-
-// ══════════════════════════════════════════════════
-// 🚀 初始化
-// ══════════════════════════════════════════════════
-async function init(){
-  render(); // 先用 MANUAL 預設值渲染
-  await fetchAll();
-  render(); // 自動數據到位後重繪
-}
-init();
-</script>
 </body>
 </html>
