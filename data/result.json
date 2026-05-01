@@ -1,58 +1,58 @@
 {
   "vix": {
-    "value": 17.05,
+    "value": 16.61,
     "prev": 16.89,
-    "change_pct": 0.95
+    "change_pct": -1.66
   },
   "sp500": {
-    "value": 7209.01,
-    "prev": 7135.95,
-    "change_pct": 1.02
+    "value": 7269.02,
+    "prev": 7209.01,
+    "change_pct": 0.83
   },
   "sox": {
-    "value": 10503.7,
-    "prev": 10271.3,
-    "change_pct": 2.26
+    "value": 10552.54,
+    "prev": 10503.7,
+    "change_pct": 0.46
   },
   "us3m": {
-    "value": 3.59,
+    "value": 3.58,
     "prev": 3.59,
-    "change_pct": -0.14
+    "change_pct": -0.28
   },
   "us10y": {
-    "value": 4.39,
-    "prev": 4.42,
-    "change_pct": -0.63
+    "value": 4.36,
+    "prev": 4.39,
+    "change_pct": -0.59
   },
   "hyg": {
-    "value": 80.38,
-    "prev": 80.13,
-    "change_pct": 0.31
+    "value": 80.21,
+    "prev": 80.38,
+    "change_pct": -0.22
   },
   "gold": {
-    "value": 4597.8,
+    "value": 4649.1,
     "prev": 4614.7,
-    "change_pct": -0.37
+    "change_pct": 0.75
   },
   "oil": {
-    "value": 105.16,
+    "value": 100.3,
     "prev": 105.07,
-    "change_pct": 0.09
+    "change_pct": -4.54
   },
   "copper": {
     "value": 6.0,
     "prev": 5.93,
-    "change_pct": 1.26
+    "change_pct": 1.24
   },
   "jpy": {
-    "value": 156.47,
-    "prev": 160.18,
-    "change_pct": -2.32
+    "value": 160.18,
+    "prev": 159.55,
+    "change_pct": 0.4
   },
   "dxy": {
-    "value": 98.05,
+    "value": 97.79,
     "prev": 98.08,
-    "change_pct": -0.03
+    "change_pct": -0.3
   },
   "twii": {
     "value": 38926.63,
@@ -65,16 +65,16 @@
     "change_pct": -2.06
   },
   "usdtwd": {
-    "value": 31.62,
+    "value": 31.55,
     "prev": 31.63,
-    "change_pct": -0.03
+    "change_pct": -0.24
   },
   "sse": {
     "value": 4112.16,
     "prev": 4107.51,
     "change_pct": 0.11
   },
-  "sp500_ma200": 6723.61,
+  "sp500_ma200": 6728.64,
   "twii_ma20": 36644.34,
   "tsmc_ma60": 1910.91,
   "fear_greed": {
@@ -91,6 +91,6 @@
   "twse_volume": {
     "value": 10749.0
   },
-  "updated_utc": "2026-05-01 07:54 UTC",
-  "updated_tw": "2026-05-01 15:54 台灣時間"
+  "updated_utc": "2026-05-01 14:21 UTC",
+  "updated_tw": "2026-05-01 22:21 台灣時間"
 }
