@@ -1,88 +1,88 @@
 {
   "vix": {
-    "value": 17.82,
+    "value": 17.6,
     "prev": 17.87,
-    "change_pct": -0.28
+    "change_pct": -1.51
   },
   "sp500": {
-    "value": 7444.25,
-    "prev": 7400.96,
-    "change_pct": 0.58
+    "value": 7495.2,
+    "prev": 7444.25,
+    "change_pct": 0.68
   },
   "sox": {
-    "value": 12017.98,
-    "prev": 11717.26,
-    "change_pct": 2.57
+    "value": 12061.04,
+    "prev": 12017.98,
+    "change_pct": 0.36
   },
   "us3m": {
-    "value": 3.6,
+    "value": 3.59,
     "prev": 3.6,
-    "change_pct": -0.08
+    "change_pct": -0.33
   },
   "us10y": {
-    "value": 4.48,
-    "prev": 4.46,
-    "change_pct": 0.4
+    "value": 4.45,
+    "prev": 4.48,
+    "change_pct": -0.71
   },
   "hyg": {
-    "value": 79.91,
-    "prev": 79.87,
-    "change_pct": 0.05
+    "value": 79.98,
+    "prev": 79.91,
+    "change_pct": 0.09
   },
   "gold": {
-    "value": 4698.3,
+    "value": 4686.7,
     "prev": 4697.7,
-    "change_pct": 0.01
+    "change_pct": -0.23
   },
   "oil": {
-    "value": 101.75,
+    "value": 101.04,
     "prev": 101.02,
-    "change_pct": 0.72
-  },
-  "copper": {
-    "value": 6.62,
-    "prev": 6.64,
-    "change_pct": -0.22
-  },
-  "jpy": {
-    "value": 157.87,
-    "prev": 157.67,
-    "change_pct": 0.13
-  },
-  "dxy": {
-    "value": 98.5,
-    "prev": 98.48,
     "change_pct": 0.02
   },
+  "copper": {
+    "value": 6.61,
+    "prev": 6.64,
+    "change_pct": -0.32
+  },
+  "jpy": {
+    "value": 158.16,
+    "prev": 157.67,
+    "change_pct": 0.31
+  },
+  "dxy": {
+    "value": 98.77,
+    "prev": 98.48,
+    "change_pct": 0.29
+  },
   "twii": {
-    "value": 41751.75,
-    "prev": 41374.5,
-    "change_pct": 0.91
+    "value": 41374.5,
+    "prev": 41898.32,
+    "change_pct": -1.25
   },
   "tsmc": {
-    "value": 2270.0,
-    "prev": 2220.0,
-    "change_pct": 2.25
+    "value": 2220.0,
+    "prev": 2255.0,
+    "change_pct": -1.55
   },
   "usdtwd": {
-    "value": 31.52,
+    "value": 31.51,
     "prev": 31.5,
-    "change_pct": 0.05
+    "change_pct": 0.02
   },
   "sse": {
-    "value": 4177.92,
-    "prev": 4242.57,
-    "change_pct": -1.52
+    "value": 4242.57,
+    "prev": 4214.49,
+    "change_pct": 0.67
   },
-  "sp500_ma200": 6768.99,
-  "twii_ma20": 39667.97,
-  "tsmc_ma60": 1983.45,
+  "sp500_ma200": 6774.6,
+  "twii_ma20": 39416.49,
+  "tsmc_ma60": 1975.27,
   "fear_greed": {
     "value": null,
     "rating": "N/A"
   },
   "twse_foreign": {
-    "value": 175.3
+    "value": 175.8
   },
   "twse_margin": {
     "value": null,
@@ -91,6 +91,6 @@
   "twse_volume": {
     "value": 12753.8
   },
-  "updated_utc": "2026-05-14 09:40 UTC",
-  "updated_tw": "2026-05-14 17:40 台灣時間"
+  "updated_utc": "2026-05-14 17:14 UTC",
+  "updated_tw": "2026-05-15 01:14 台灣時間"
 }
