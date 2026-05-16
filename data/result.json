@@ -82,15 +82,15 @@
     "rating": "N/A"
   },
   "twse_foreign": {
-    "value": null
+    "value": -367.4
   },
   "twse_margin": {
     "value": null,
     "change_pct": null
   },
   "twse_volume": {
-    "value": null
+    "value": 13748.7
   },
-  "updated_utc": "2026-05-16 07:32 UTC",
-  "updated_tw": "2026-05-16 15:32 台灣時間"
+  "updated_utc": "2026-05-16 14:37 UTC",
+  "updated_tw": "2026-05-16 22:37 台灣時間"
 }
