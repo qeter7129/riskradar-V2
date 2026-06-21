@@ -51,8 +51,8 @@
   },
   "dxy": {
     "value": 100.85,
-    "prev": 100.85,
-    "change_pct": -0.0
+    "prev": 100.09,
+    "change_pct": 0.76
   },
   "twii": {
     "value": 46465.2,
@@ -91,6 +91,6 @@
   "twse_volume": {
     "value": 16062.0
   },
-  "updated_utc": "2026-06-20 11:58 UTC",
-  "updated_tw": "2026-06-20 19:58 台灣時間"
+  "updated_utc": "2026-06-21 04:42 UTC",
+  "updated_tw": "2026-06-21 12:42 台灣時間"
 }
