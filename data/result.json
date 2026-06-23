@@ -1,8 +1,8 @@
 {
   "vix": {
-    "value": 17.28,
-    "prev": 16.4,
-    "change_pct": 5.37
+    "value": 19.75,
+    "prev": 17.28,
+    "change_pct": 14.29
   },
   "sp500": {
     "value": 7472.79,
@@ -15,14 +15,14 @@
     "change_pct": 2.04
   },
   "us3m": {
-    "value": 3.68,
+    "value": 3.69,
     "prev": 3.66,
-    "change_pct": 0.6
+    "change_pct": 0.96
   },
   "us10y": {
-    "value": 4.51,
+    "value": 4.49,
     "prev": 4.45,
-    "change_pct": 1.3
+    "change_pct": 0.85
   },
   "hyg": {
     "value": 79.94,
@@ -30,67 +30,67 @@
     "change_pct": -0.09
   },
   "gold": {
-    "value": 4153.2,
-    "prev": 4224.1,
-    "change_pct": -1.68
+    "value": 4132.6,
+    "prev": 4181.9,
+    "change_pct": -1.18
   },
   "oil": {
-    "value": 73.73,
-    "prev": 76.6,
-    "change_pct": -3.75
+    "value": 73.35,
+    "prev": 74.82,
+    "change_pct": -1.96
   },
   "copper": {
-    "value": 6.28,
-    "prev": 6.37,
-    "change_pct": -1.44
+    "value": 6.16,
+    "prev": 6.36,
+    "change_pct": -3.14
   },
   "jpy": {
-    "value": 161.56,
+    "value": 161.46,
     "prev": 161.43,
-    "change_pct": 0.08
+    "change_pct": 0.01
   },
   "dxy": {
-    "value": 101.04,
-    "prev": 100.85,
-    "change_pct": 0.18
+    "value": 101.33,
+    "prev": 101.02,
+    "change_pct": 0.31
   },
   "twii": {
-    "value": 47402.65,
+    "value": 47100.65,
     "prev": 47741.51,
-    "change_pct": -0.71
+    "change_pct": -1.34
   },
   "tsmc": {
-    "value": 2505.0,
+    "value": 2490.0,
     "prev": 2510.0,
-    "change_pct": -0.2
+    "change_pct": -0.8
   },
   "usdtwd": {
-    "value": 31.61,
+    "value": 31.65,
     "prev": 31.7,
-    "change_pct": -0.29
+    "change_pct": -0.16
   },
   "sse": {
-    "value": 4147.55,
+    "value": 4106.25,
     "prev": 4163.1,
-    "change_pct": -0.37
+    "change_pct": -1.37
   },
   "sp500_ma200": 6907.75,
-  "twii_ma20": 45084.48,
-  "tsmc_ma60": 2182.2,
+  "twii_ma20": 45069.83,
+  "tsmc_ma60": 2181.95,
   "fear_greed": {
     "value": null,
     "rating": "N/A"
   },
   "twse_foreign": {
-    "value": 700.4
+    "value": -483.4
   },
   "twse_margin": {
     "value": null,
     "change_pct": null
   },
   "twse_volume": {
-    "value": 15158.2
+    "value": 16723.6
   },
-  "updated_utc": "2026-06-23 03:52 UTC",
-  "updated_tw": "2026-06-23 11:52 台灣時間"
+  "updated_utc": "2026-06-23 12:35 UTC",
+  "updated_tw": "2026-06-23 20:35 台灣時間"
 }
