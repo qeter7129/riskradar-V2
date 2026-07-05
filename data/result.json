@@ -16,13 +16,13 @@
   },
   "us3m": {
     "value": 3.67,
-    "prev": 3.67,
-    "change_pct": 0.0
+    "prev": 3.7,
+    "change_pct": -0.86
   },
   "us10y": {
-    "value": 4.48,
-    "prev": 4.48,
-    "change_pct": 0.0
+    "value": 4.49,
+    "prev": 4.47,
+    "change_pct": 0.22
   },
   "hyg": {
     "value": 79.71,
@@ -51,8 +51,8 @@
   },
   "dxy": {
     "value": 100.86,
-    "prev": 100.86,
-    "change_pct": -0.0
+    "prev": 101.39,
+    "change_pct": -0.52
   },
   "twii": {
     "value": 46780.62,
@@ -91,6 +91,6 @@
   "twse_volume": {
     "value": 10780.3
   },
-  "updated_utc": "2026-07-05 03:43 UTC",
-  "updated_tw": "2026-07-05 11:43 台灣時間"
+  "updated_utc": "2026-07-05 11:36 UTC",
+  "updated_tw": "2026-07-05 19:36 台灣時間"
 }
