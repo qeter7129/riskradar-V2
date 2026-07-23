@@ -1,8 +1,8 @@
 {
   "vix": {
-    "value": 16.64,
-    "prev": 17.05,
-    "change_pct": -2.4
+    "value": 18.22,
+    "prev": 16.64,
+    "change_pct": 9.5
   },
   "sp500": {
     "value": 7498.96,
@@ -15,7 +15,7 @@
     "change_pct": 0.44
   },
   "us3m": {
-    "value": 3.75,
+    "value": 3.74,
     "prev": 3.73,
     "change_pct": 0.4
   },
@@ -30,67 +30,67 @@
     "change_pct": -0.16
   },
   "gold": {
-    "value": 4128.9,
-    "prev": 4071.1,
-    "change_pct": 1.42
+    "value": 4078.4,
+    "prev": 4146.9,
+    "change_pct": -1.65
   },
   "oil": {
-    "value": 88.34,
-    "prev": 84.91,
-    "change_pct": 4.04
+    "value": 91.03,
+    "prev": 86.83,
+    "change_pct": 4.84
   },
   "copper": {
-    "value": 6.53,
-    "prev": 6.51,
-    "change_pct": 0.22
+    "value": 6.45,
+    "prev": 6.45,
+    "change_pct": -0.09
   },
   "jpy": {
-    "value": 163.07,
-    "prev": 163.19,
-    "change_pct": -0.07
+    "value": 163.19,
+    "prev": 162.49,
+    "change_pct": 0.43
   },
   "dxy": {
-    "value": 101.0,
-    "prev": 101.18,
-    "change_pct": -0.18
+    "value": 101.36,
+    "prev": 101.14,
+    "change_pct": 0.22
   },
   "twii": {
-    "value": 44523.99,
+    "value": 44850.81,
     "prev": 44825.78,
-    "change_pct": -0.67
+    "change_pct": 0.06
   },
   "tsmc": {
-    "value": 2370.0,
+    "value": 2405.0,
     "prev": 2400.0,
-    "change_pct": -1.25
+    "change_pct": 0.21
   },
   "usdtwd": {
-    "value": 32.28,
+    "value": 32.3,
     "prev": 32.33,
-    "change_pct": -0.13
+    "change_pct": -0.09
   },
   "sse": {
-    "value": 3864.14,
+    "value": 3876.78,
     "prev": 3867.03,
-    "change_pct": -0.07
+    "change_pct": 0.25
   },
   "sp500_ma200": 6998.91,
-  "twii_ma20": 45284.83,
-  "tsmc_ma60": 2339.39,
+  "twii_ma20": 45301.33,
+  "tsmc_ma60": 2339.97,
   "fear_greed": {
     "value": null,
     "rating": "N/A"
   },
   "twse_foreign": {
-    "value": 338.5
+    "value": 185.2
   },
   "twse_margin": {
     "value": null,
     "change_pct": null
   },
   "twse_volume": {
-    "value": 10259.6
+    "value": 9306.1
   },
-  "updated_utc": "2026-07-23 03:14 UTC",
-  "updated_tw": "2026-07-23 11:14 台灣時間"
+  "updated_utc": "2026-07-23 11:52 UTC",
+  "updated_tw": "2026-07-23 19:52 台灣時間"
 }
