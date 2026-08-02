@@ -30,9 +30,9 @@
     "change_pct": 0.01
   },
   "gold": {
-    "value": 4049.1,
+    "value": 4107.0,
     "prev": 4100.1,
-    "change_pct": -1.24
+    "change_pct": 0.17
   },
   "oil": {
     "value": 84.67,
@@ -40,9 +40,9 @@
     "change_pct": 1.29
   },
   "copper": {
-    "value": 6.44,
+    "value": 6.47,
     "prev": 6.44,
-    "change_pct": -0.13
+    "change_pct": 0.33
   },
   "jpy": {
     "value": 157.4,
@@ -91,6 +91,6 @@
   "twse_volume": {
     "value": 8877.3
   },
-  "updated_utc": "2026-08-02 03:16 UTC",
-  "updated_tw": "2026-08-02 11:16 台灣時間"
+  "updated_utc": "2026-08-02 11:18 UTC",
+  "updated_tw": "2026-08-02 19:18 台灣時間"
 }
