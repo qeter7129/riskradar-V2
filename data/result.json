@@ -1,8 +1,8 @@
 {
   "vix": {
-    "value": 16.5,
-    "prev": 15.86,
-    "change_pct": 4.04
+    "value": 16.67,
+    "prev": 16.5,
+    "change_pct": 1.03
   },
   "sp500": {
     "value": 7736.52,
@@ -30,34 +30,34 @@
     "change_pct": 0.3
   },
   "gold": {
-    "value": 4162.4,
-    "prev": 4033.7,
-    "change_pct": 3.19
+    "value": 4246.5,
+    "prev": 4095.4,
+    "change_pct": 3.69
   },
   "oil": {
-    "value": 74.5,
-    "prev": 80.34,
-    "change_pct": -7.27
+    "value": 76.17,
+    "prev": 75.77,
+    "change_pct": 0.53
   },
   "copper": {
-    "value": 6.64,
-    "prev": 6.51,
-    "change_pct": 1.92
+    "value": 6.66,
+    "prev": 6.62,
+    "change_pct": 0.55
   },
   "jpy": {
-    "value": 157.32,
+    "value": 157.56,
     "prev": 157.53,
-    "change_pct": -0.13
+    "change_pct": 0.02
   },
   "dxy": {
-    "value": 99.84,
-    "prev": 99.96,
-    "change_pct": -0.12
+    "value": 99.73,
+    "prev": 99.89,
+    "change_pct": -0.16
   },
   "twii": {
-    "value": 44858.08,
-    "prev": 43386.41,
-    "change_pct": 3.39
+    "value": 44611.6,
+    "prev": 43360.66,
+    "change_pct": 2.88
   },
   "tsmc": {
     "value": 2405.0,
@@ -65,32 +65,32 @@
     "change_pct": 3.66
   },
   "usdtwd": {
-    "value": 32.22,
+    "value": 32.29,
     "prev": 32.4,
-    "change_pct": -0.54
+    "change_pct": -0.31
   },
   "sse": {
-    "value": 3852.03,
-    "prev": 3809.66,
-    "change_pct": 1.11
+    "value": 3878.43,
+    "prev": 3822.28,
+    "change_pct": 1.47
   },
   "sp500_ma200": 7034.22,
-  "twii_ma20": 43860.14,
+  "twii_ma20": 43741.89,
   "tsmc_ma60": 2352.95,
   "fear_greed": {
     "value": null,
     "rating": "N/A"
   },
   "twse_foreign": {
-    "value": 20.0
+    "value": 1030.3
   },
   "twse_margin": {
     "value": null,
     "change_pct": null
   },
   "twse_volume": {
-    "value": 10870.5
+    "value": 12002.1
   },
-  "updated_utc": "2026-08-05 02:44 UTC",
-  "updated_tw": "2026-08-05 10:44 台灣時間"
+  "updated_utc": "2026-08-05 12:00 UTC",
+  "updated_tw": "2026-08-05 20:00 台灣時間"
 }
