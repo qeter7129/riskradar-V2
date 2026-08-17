@@ -1,8 +1,8 @@
 {
   "vix": {
-    "value": 14.25,
-    "prev": 14.63,
-    "change_pct": -2.6
+    "value": 14.96,
+    "prev": 14.25,
+    "change_pct": 4.98
   },
   "sp500": {
     "value": 7785.76,
@@ -30,67 +30,67 @@
     "change_pct": -0.1
   },
   "gold": {
-    "value": 4466.8,
+    "value": 4452.6,
     "prev": 4380.4,
-    "change_pct": 1.97
+    "change_pct": 1.65
   },
   "oil": {
-    "value": 82.16,
+    "value": 83.06,
     "prev": 82.4,
-    "change_pct": -0.29
+    "change_pct": 0.8
   },
   "copper": {
-    "value": 6.68,
+    "value": 6.69,
     "prev": 6.6,
-    "change_pct": 1.16
+    "change_pct": 1.36
   },
   "jpy": {
-    "value": 159.03,
+    "value": 159.15,
     "prev": 159.43,
-    "change_pct": -0.25
+    "change_pct": -0.17
   },
   "dxy": {
-    "value": 99.53,
+    "value": 99.43,
     "prev": 99.67,
-    "change_pct": -0.14
+    "change_pct": -0.24
   },
   "twii": {
-    "value": 46127.37,
+    "value": 45857.27,
     "prev": 45811.01,
-    "change_pct": 0.69
+    "change_pct": 0.1
   },
   "tsmc": {
-    "value": 2410.0,
+    "value": 2400.0,
     "prev": 2395.0,
-    "change_pct": 0.63
+    "change_pct": 0.21
   },
   "usdtwd": {
-    "value": 31.9,
+    "value": 31.81,
     "prev": 32.12,
-    "change_pct": -0.71
+    "change_pct": -0.97
   },
   "sse": {
-    "value": 3927.18,
-    "prev": 3926.97,
-    "change_pct": 0.01
+    "value": 3982.65,
+    "prev": 3927.18,
+    "change_pct": 1.41
   },
-  "sp500_ma200": 7074.9,
-  "twii_ma20": 43971.28,
-  "tsmc_ma60": 2375.32,
+  "sp500_ma200": 7064.44,
+  "twii_ma20": 43885.01,
+  "tsmc_ma60": 2375.16,
   "fear_greed": {
     "value": null,
     "rating": "N/A"
   },
   "twse_foreign": {
-    "value": 516.6
+    "value": 291.1
   },
   "twse_margin": {
     "value": null,
     "change_pct": null
   },
   "twse_volume": {
-    "value": 11097.5
+    "value": 9810.6
   },
-  "updated_utc": "2026-08-17 01:24 UTC",
-  "updated_tw": "2026-08-17 09:24 台灣時間"
+  "updated_utc": "2026-08-17 10:34 UTC",
+  "updated_tw": "2026-08-17 18:34 台灣時間"
 }
