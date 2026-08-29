@@ -1,33 +1,33 @@
 {
   "vix": {
-    "value": 14.51,
-    "prev": 15.21,
-    "change_pct": -4.6
+    "value": 14.43,
+    "prev": 14.51,
+    "change_pct": -0.55
   },
   "sp500": {
-    "value": 7730.99,
-    "prev": 7675.7,
-    "change_pct": 0.72
+    "value": 7711.76,
+    "prev": 7730.99,
+    "change_pct": -0.25
   },
   "sox": {
-    "value": 11882.17,
-    "prev": 11611.24,
-    "change_pct": 2.33
+    "value": 11469.66,
+    "prev": 11882.17,
+    "change_pct": -3.47
   },
   "us3m": {
-    "value": 3.68,
-    "prev": 3.69,
-    "change_pct": -0.33
+    "value": 3.73,
+    "prev": 3.68,
+    "change_pct": 1.41
   },
   "us10y": {
-    "value": 4.67,
-    "prev": 4.66,
-    "change_pct": 0.17
+    "value": 4.72,
+    "prev": 4.67,
+    "change_pct": 1.03
   },
   "hyg": {
-    "value": 79.87,
-    "prev": 79.9,
-    "change_pct": -0.04
+    "value": 79.74,
+    "prev": 79.87,
+    "change_pct": -0.16
   },
   "gold": {
     "value": 4609.7,
@@ -50,14 +50,14 @@
     "change_pct": 0.49
   },
   "dxy": {
-    "value": 99.16,
-    "prev": 99.17,
-    "change_pct": -0.01
+    "value": 99.7,
+    "prev": 99.16,
+    "change_pct": 0.54
   },
   "twii": {
-    "value": 45975.22,
-    "prev": 45832.62,
-    "change_pct": 0.31
+    "value": 46331.45,
+    "prev": 45975.22,
+    "change_pct": 0.77
   },
   "tsmc": {
     "value": 2420.0,
@@ -70,19 +70,19 @@
     "change_pct": -0.56
   },
   "sse": {
-    "value": 3956.57,
-    "prev": 3912.52,
-    "change_pct": 1.13
+    "value": 3952.18,
+    "prev": 3956.57,
+    "change_pct": -0.11
   },
-  "sp500_ma200": 7114.32,
-  "twii_ma20": 44914.2,
+  "sp500_ma200": 7118.72,
+  "twii_ma20": 45074.79,
   "tsmc_ma60": 2383.76,
   "fear_greed": {
     "value": null,
     "rating": "N/A"
   },
   "twse_foreign": {
-    "value": 458.3
+    "value": null
   },
   "twse_margin": {
     "value": null,
@@ -91,6 +91,6 @@
   "twse_volume": {
     "value": 10689.9
   },
-  "updated_utc": "2026-08-29 06:18 UTC",
-  "updated_tw": "2026-08-29 14:18 台灣時間"
+  "updated_utc": "2026-08-29 14:57 UTC",
+  "updated_tw": "2026-08-29 22:57 台灣時間"
 }
