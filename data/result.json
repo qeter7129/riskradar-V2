@@ -30,19 +30,19 @@
     "change_pct": -0.03
   },
   "gold": {
-    "value": 4390.0,
+    "value": 4366.2,
     "prev": 4364.5,
-    "change_pct": 0.58
+    "change_pct": 0.04
   },
   "oil": {
-    "value": 99.99,
+    "value": 100.05,
     "prev": 102.48,
-    "change_pct": -2.43
+    "change_pct": -2.37
   },
   "copper": {
-    "value": 6.56,
+    "value": 6.47,
     "prev": 6.47,
-    "change_pct": 1.39
+    "change_pct": 0.04
   },
   "jpy": {
     "value": 153.55,
@@ -50,9 +50,9 @@
     "change_pct": -0.01
   },
   "dxy": {
-    "value": 99.1,
+    "value": 99.12,
     "prev": 99.09,
-    "change_pct": 0.01
+    "change_pct": 0.03
   },
   "twii": {
     "value": 46184.85,
@@ -91,6 +91,6 @@
   "twse_volume": {
     "value": 7622.5
   },
-  "updated_utc": "2026-09-12 03:47 UTC",
-  "updated_tw": "2026-09-12 11:47 台灣時間"
+  "updated_utc": "2026-09-12 13:25 UTC",
+  "updated_tw": "2026-09-12 21:25 台灣時間"
 }
