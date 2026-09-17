@@ -1,82 +1,82 @@
 {
   "vix": {
-    "value": 16.96,
+    "value": 17.71,
     "prev": 17.2,
-    "change_pct": -1.4
+    "change_pct": 2.97
   },
   "sp500": {
-    "value": 7607.13,
+    "value": 7551.81,
     "prev": 7585.73,
-    "change_pct": 0.28
+    "change_pct": -0.45
   },
   "sox": {
-    "value": 11351.56,
+    "value": 11246.11,
     "prev": 11175.55,
-    "change_pct": 1.57
+    "change_pct": 0.63
   },
   "us3m": {
-    "value": 3.94,
+    "value": 3.97,
     "prev": 3.96,
-    "change_pct": -0.43
+    "change_pct": 0.25
   },
   "us10y": {
-    "value": 4.97,
+    "value": 5.01,
     "prev": 5.0,
-    "change_pct": -0.62
+    "change_pct": 0.2
   },
   "hyg": {
-    "value": 78.61,
+    "value": 78.42,
     "prev": 78.38,
-    "change_pct": 0.3
+    "change_pct": 0.05
   },
   "gold": {
-    "value": 4376.7,
+    "value": 4387.5,
     "prev": 4332.8,
-    "change_pct": 1.01
+    "change_pct": 1.26
   },
   "oil": {
-    "value": 103.55,
+    "value": 102.43,
     "prev": 105.83,
-    "change_pct": -2.15
+    "change_pct": -3.21
   },
   "copper": {
-    "value": 6.5,
+    "value": 6.43,
     "prev": 6.37,
-    "change_pct": 2.02
+    "change_pct": 0.99
   },
   "jpy": {
-    "value": 155.09,
-    "prev": 154.38,
-    "change_pct": 0.46
+    "value": 156.08,
+    "prev": 155.27,
+    "change_pct": 0.52
   },
   "dxy": {
-    "value": 99.68,
+    "value": 100.31,
     "prev": 99.65,
-    "change_pct": 0.03
+    "change_pct": 0.66
   },
   "twii": {
-    "value": 45848.9,
-    "prev": 45511.49,
-    "change_pct": 0.74
+    "value": 46505.24,
+    "prev": 45848.9,
+    "change_pct": 1.43
   },
   "tsmc": {
-    "value": 2380.0,
-    "prev": 2378.0,
-    "change_pct": 0.08
+    "value": 2430.0,
+    "prev": 2380.0,
+    "change_pct": 2.1
   },
   "usdtwd": {
-    "value": 31.77,
-    "prev": 31.72,
-    "change_pct": 0.18
+    "value": 31.88,
+    "prev": 31.77,
+    "change_pct": 0.32
   },
   "sse": {
-    "value": 3891.6,
-    "prev": 3864.28,
-    "change_pct": 0.71
+    "value": 3877.46,
+    "prev": 3891.6,
+    "change_pct": -0.36
   },
-  "sp500_ma200": 7175.2,
-  "twii_ma20": 46092.17,
-  "tsmc_ma60": 2388.75,
+  "sp500_ma200": 7174.92,
+  "twii_ma20": 46170.78,
+  "tsmc_ma60": 2389.54,
   "fear_greed": {
     "value": null,
     "rating": "N/A"
@@ -91,6 +91,6 @@
   "twse_volume": {
     "value": 6759.7
   },
-  "updated_utc": "2026-09-16 14:42 UTC",
-  "updated_tw": "2026-09-16 22:42 台灣時間"
+  "updated_utc": "2026-09-17 04:05 UTC",
+  "updated_tw": "2026-09-17 12:05 台灣時間"
 }
