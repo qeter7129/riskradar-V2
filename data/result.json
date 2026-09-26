@@ -46,8 +46,8 @@
   },
   "jpy": {
     "value": 157.18,
-    "prev": 158.26,
-    "change_pct": -0.68
+    "prev": 158.81,
+    "change_pct": -1.02
   },
   "dxy": {
     "value": 100.97,
@@ -91,6 +91,6 @@
   "twse_volume": {
     "value": 7755.9
   },
-  "updated_utc": "2026-09-26 04:10 UTC",
-  "updated_tw": "2026-09-26 12:10 台灣時間"
+  "updated_utc": "2026-09-26 14:13 UTC",
+  "updated_tw": "2026-09-26 22:13 台灣時間"
 }
