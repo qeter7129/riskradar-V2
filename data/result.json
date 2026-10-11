@@ -40,9 +40,9 @@
     "change_pct": 0.39
   },
   "copper": {
-    "value": 6.64,
+    "value": 6.69,
     "prev": 6.52,
-    "change_pct": 1.89
+    "change_pct": 2.65
   },
   "jpy": {
     "value": 158.25,
@@ -91,6 +91,6 @@
   "twse_volume": {
     "value": 9245.1
   },
-  "updated_utc": "2026-10-10 15:46 UTC",
-  "updated_tw": "2026-10-10 23:46 台灣時間"
+  "updated_utc": "2026-10-11 04:48 UTC",
+  "updated_tw": "2026-10-11 12:48 台灣時間"
 }
