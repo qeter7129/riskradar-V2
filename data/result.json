@@ -1,58 +1,58 @@
 {
   "vix": {
-    "value": 19.3,
+    "value": 19.03,
     "prev": 16.68,
-    "change_pct": 15.71
+    "change_pct": 14.09
   },
   "sp500": {
-    "value": 7650.49,
+    "value": 7663.43,
     "prev": 7757.17,
-    "change_pct": -1.38
+    "change_pct": -1.21
   },
   "sox": {
-    "value": 10841.23,
+    "value": 10731.98,
     "prev": 11505.56,
-    "change_pct": -5.77
+    "change_pct": -6.72
   },
   "us3m": {
-    "value": 4.03,
+    "value": 4.02,
     "prev": 4.06,
-    "change_pct": -0.69
+    "change_pct": -1.01
   },
   "us10y": {
-    "value": 5.01,
+    "value": 4.95,
     "prev": 5.15,
-    "change_pct": -2.66
+    "change_pct": -3.75
   },
   "hyg": {
-    "value": 76.97,
+    "value": 77.1,
     "prev": 76.98,
-    "change_pct": -0.01
+    "change_pct": 0.16
   },
   "gold": {
-    "value": 4073.5,
+    "value": 4032.3,
     "prev": 4150.0,
-    "change_pct": -1.84
+    "change_pct": -2.84
   },
   "oil": {
-    "value": 98.26,
+    "value": 100.07,
     "prev": 97.15,
-    "change_pct": 1.14
+    "change_pct": 3.01
   },
   "copper": {
     "value": 6.43,
     "prev": 6.54,
-    "change_pct": -1.78
+    "change_pct": -1.67
   },
   "jpy": {
-    "value": 157.26,
-    "prev": 158.27,
-    "change_pct": -0.64
+    "value": 156.87,
+    "prev": 158.13,
+    "change_pct": -0.8
   },
   "dxy": {
-    "value": 101.85,
+    "value": 101.65,
     "prev": 101.78,
-    "change_pct": 0.07
+    "change_pct": -0.13
   },
   "twii": {
     "value": 46041.43,
@@ -65,16 +65,16 @@
     "change_pct": -1.45
   },
   "usdtwd": {
-    "value": 32.54,
-    "prev": 32.58,
-    "change_pct": -0.11
+    "value": 32.6,
+    "prev": 32.37,
+    "change_pct": 0.72
   },
   "sse": {
-    "value": 3658.03,
-    "prev": 3713.03,
-    "change_pct": -1.48
+    "value": 3614.12,
+    "prev": 3658.03,
+    "change_pct": -1.2
   },
-  "sp500_ma200": 7287.73,
+  "sp500_ma200": 7287.8,
   "twii_ma20": 48071.61,
   "tsmc_ma60": 2419.05,
   "fear_greed": {
@@ -91,6 +91,6 @@
   "twse_volume": {
     "value": 9334.4
   },
-  "updated_utc": "2026-10-22 14:55 UTC",
-  "updated_tw": "2026-10-22 22:55 台灣時間"
+  "updated_utc": "2026-10-23 03:56 UTC",
+  "updated_tw": "2026-10-23 11:56 台灣時間"
 }
