@@ -65,9 +65,9 @@
     "change_pct": -4.69
   },
   "usdtwd": {
-    "value": 33.11,
-    "prev": 32.82,
-    "change_pct": 0.88
+    "value": 32.76,
+    "prev": 33.11,
+    "change_pct": -1.04
   },
   "sse": {
     "value": 3649.18,
@@ -91,6 +91,6 @@
   "twse_volume": {
     "value": 13210.7
   },
-  "updated_utc": "2026-11-08 05:09 UTC",
-  "updated_tw": "2026-11-08 13:09 台灣時間"
+  "updated_utc": "2026-11-08 16:32 UTC",
+  "updated_tw": "2026-11-09 00:32 台灣時間"
 }
